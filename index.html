@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AFJ Auto Parts &amp; Wreckers — Used, New &amp; Aftermarket Parts</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --charcoal:#181b1c;
+    --steel:#242a2c;
+    --steel-2:#2f373a;
+    --offwhite:#f1ede3;
+    --paper:#ece7da;
+    --rust:#c1502e;
+    --rust-dark:#93361c;
+    --hazard:#e0ac2b;
+    --gray-mid:#9aa2a3;
+    --line: rgba(241,237,227,0.14);
+    --radius: 3px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--charcoal);
+    color:var(--offwhite);
+    font-family:'Inter',sans-serif;
+    line-height:1.55;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,h4{font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:0.02em;line-height:1.05;}
+  .mono{font-family:'IBM Plex Mono',monospace;}
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:1200px;margin:0 auto;padding:0 28px;}
+  section{position:relative;}
+  .tag-label{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--hazard);
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    margin-bottom:14px;
+  }
+  .tag-label::before{content:"";width:8px;height:8px;background:var(--rust);display:inline-block;transform:rotate(45deg);}
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:10px;
+    padding:15px 28px;
+    font-family:'Oswald',sans-serif;
+    font-weight:600;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    font-size:14px;
+    border:none;
+    border-radius:var(--radius);
+    cursor:pointer;
+    transition:transform .15s ease, box-shadow .15s ease, background .15s ease;
+  }
+  .btn-primary{background:var(--rust);color:var(--offwhite);}
+  .btn-primary:hover{background:var(--rust-dark);transform:translateY(-2px);}
+  .btn-outline{background:transparent;color:var(--offwhite);border:1.5px solid var(--line);}
+  .btn-outline:hover{border-color:var(--hazard);color:var(--hazard);transform:translateY(-2px);}
+  .btn:focus-visible{outline:2px solid var(--hazard);outline-offset:3px;}
+  a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible{outline:2px solid var(--hazard);outline-offset:2px;}
+
+  /* ===== HEADER ===== */
+  header{
+    position:sticky;top:0;left:0;right:0;z-index:100;
+    background:rgba(24,27,28,0.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:18px 28px;max-width:1200px;margin:0 auto;
+  }
+  .logo{display:flex;align-items:center;gap:10px;font-family:'Oswald',sans-serif;font-weight:700;font-size:20px;letter-spacing:0.03em;text-transform:uppercase;}
+  .logo span{color:var(--rust);}
+  .logo .bolt{width:26px;height:26px;border:2px solid var(--rust);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--rust);font-family:'IBM Plex Mono',monospace;}
+  nav.links{display:flex;gap:32px;font-size:14px;font-weight:500;}
+  nav.links a{position:relative;padding:6px 0;color:var(--gray-mid);transition:color .15s;}
+  nav.links a:hover{color:var(--offwhite);}
+  .nav-right{display:flex;align-items:center;gap:18px;}
+  .phone-pill{
+    display:flex;align-items:center;gap:8px;
+    font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--hazard);
+  }
+  .hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:6px;}
+  .hamburger span{width:24px;height:2px;background:var(--offwhite);}
+  .mobile-menu{display:none;flex-direction:column;gap:0;background:var(--steel);border-bottom:1px solid var(--line);}
+  .mobile-menu a{padding:16px 28px;border-top:1px solid var(--line);font-size:15px;}
+  .mobile-menu.open{display:flex;}
+
+  /* ===== HERO ===== */
+  .hero{
+    background: url('https://images.pexels.com/photos/27703432/pexels-photo-27703432.jpeg?_gl=1*1r7p9m7*_ga*OTY0NjQ1NDI5LjE3ODI5OTY0NjQ.*_ga_8JE65Q40S6*czE3ODI5OTY0NjMkbzEkZzAkdDE3ODI5OTY0NjMkajYwJGwwJGgw');
+    /* radial-gradient(ellipse at 80% -10%, rgba(193,80,46,0.22), transparent 55%),
+      repeating-linear-gradient(135deg, rgba(241,237,227,0.025) 0 2px, transparent 2px 26px),
+      var(--charcoal); */
+    padding:90px 0 70px;
+    position: relative;
+    background-size: cover;
+    border-bottom:1px solid var(--line);
+  }
+  .hero::after{
+    content: '';
+    inset: 0;
+    position: absolute;
+    opacity: 0.4;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+
+  }
+  .hero-grid{position: relative;z-index: 2;;display:grid;grid-template-columns:1.15fr 0.85fr;gap:50px;align-items:center;}
+  .hero h1{position:relative;z-index: 2;font-size:clamp(38px,5.4vw,68px);margin-bottom:20px;}
+  .hero h1 em{position:relative;z-index: 2;font-style:normal;color:var(--rust);}
+  .hero p.lead{position:relative;z-index: 2;font-size:17px;color:var(--gray-mid);max-width:520px;margin-bottom:32px;}
+  .hero-ctas{position:relative;z-index: 2;display:flex;gap:16px;flex-wrap:wrap;margin-bottom:36px;}
+  .hero-stats{position:relative;z-index: 2;display:flex;gap:36px;flex-wrap:wrap;}
+  .hero-stats div{position:relative;z-index: 2;display:flex;flex-direction:column;}
+  .hero-stats .num{position:relative;z-index: 2;font-family:'Oswald',sans-serif;font-size:30px;font-weight:700;color:var(--offwhite);}
+  .hero-stats .lbl{position:relative;z-index: 2;font-size:12px;color:var(--gray-mid);text-transform:uppercase;letter-spacing:0.06em;}
+
+  /* yard tag graphic */
+  .yard-tag{
+    background:rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+    border-top:1.5px solid rgba(255, 255, 255, 0.5);
+    border-radius:6px;
+    padding:26px;
+    position:relative;
+    box-shadow:0 30px 60px -20px rgba(0,0,0,0.6);
+  }
+  .yard-tag::before{
+    content:"";position:absolute;top:-9px;left:26px;width:18px;height:18px;
+    background:var(--charcoal);border:1.5px solid var(--line);border-radius:50%;
+  }
+  .yard-tag .tt-head{display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px dashed var(--line);padding-bottom:14px;margin-bottom:14px;}
+  .yard-tag .tt-head .stock{font-family:'IBM Plex Mono',monospace;color:var(--hazard);font-size:13px;}
+  .yard-tag h3{font-size:26px;margin-bottom:4px;}
+  .yard-tag .tt-row{display:flex;justify-content:space-between;font-size:13px;color:var(--gray-mid);padding:7px 0;border-bottom:1px solid var(--line);font-family:'IBM Plex Mono',monospace;}
+  .yard-tag .tt-row span:last-child{color:var(--offwhite);}
+  .yard-tag .tt-row:last-of-type{border-bottom:none;}
+  .yard-tag .tt-price{display:flex;justify-content:space-between;align-items:baseline;margin-top:16px;}
+  .yard-tag .tt-price .amt{font-family:'Oswald',sans-serif;font-size:32px;color:var(--rust);font-weight:700;}
+  .yard-tag .tt-badge{background:var(--rust);color:var(--offwhite);font-family:'IBM Plex Mono',monospace;font-size:11px;padding:4px 9px;border-radius:2px;letter-spacing:0.05em;}
+
+  /* ===== TICKER ===== */
+  .ticker-strip{background:var(--rust);overflow:hidden;border-bottom:1px solid var(--line);}
+  .ticker-track{display:flex;white-space:nowrap;animation:scroll-left 32s linear infinite;padding:11px 0;}
+  .ticker-track span{font-family:'IBM Plex Mono',monospace;font-size:13px;color:#fff2e8;margin-right:48px;letter-spacing:0.02em;}
+  .ticker-track span b{color:#2c1006;background:#fff;padding:1px 6px;border-radius:2px;margin-right:6px;}
+  @keyframes scroll-left{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+  /* ===== SECTION GENERIC ===== */
+  .section{padding:88px 0;}
+  .section-head{max-width:640px;margin-bottom:52px;}
+  .section-head h2{font-size:clamp(28px,3.6vw,44px);margin-bottom:16px;}
+  .section-head p{color:var(--gray-mid);font-size:16px;}
+  .alt-bg{background:var(--steel);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+
+  /* ===== PART FINDER ===== */
+  .finder{
+    background:var(--steel-2);
+    border:1px solid var(--line);
+    border-radius:8px;
+    padding:30px;
+    display:grid;
+    grid-template-columns:1fr 1fr 1fr 1fr auto;
+    gap:14px;
+    align-items:end;
+    margin-top:-46px;
+    position:relative;
+    z-index:5;
+    box-shadow:0 40px 70px -30px rgba(0,0,0,0.7);
+  }
+  .field{display:flex;flex-direction:column;gap:8px;}
+  .field label{font-size:11px;text-transform:uppercase;letter-spacing:0.08em;color:var(--gray-mid);font-family:'IBM Plex Mono',monospace;}
+  .field select, .field input{
+    background:var(--charcoal);
+    border:1px solid var(--line);
+    color:var(--offwhite);
+    padding:12px 12px;
+    border-radius:var(--radius);
+    font-size:14px;
+    font-family:'Inter',sans-serif;
+  }
+  .field select:focus, .field input:focus{border-color:var(--rust);outline:none;}
+  .finder .btn{height:46px;white-space:nowrap;}
+
+  /* ===== SERVICES / TAG CARDS ===== */
+  .tag-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+  .tcard{
+    background:var(--steel);
+    border:1px solid var(--line);
+    border-radius:6px;
+    padding:26px 22px;
+    transition:border-color .2s, transform .2s;
+  }
+  .tcard:hover{border-color:var(--rust);transform:translateY(-4px);}
+  .tcard .icon{width:44px;height:44px;border-radius:50%;background:rgba(193,80,46,0.14);color:var(--rust);display:flex;align-items:center;justify-content:center;margin-bottom:18px;font-size:20px;}
+  .tcard h3{font-size:17px;margin-bottom:10px;letter-spacing:0.01em;}
+  .tcard p{font-size:14px;color:var(--gray-mid);}
+  .tcard .num{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--hazard);display:block;margin-bottom:10px;}
+
+  /* ===== PROCESS ===== */
+  .process{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative;}
+  .pstep{padding:0 26px;position:relative;}
+  .pstep:not(:last-child)::after{
+    content:"";position:absolute;top:26px;right:-2px;width:100%;height:1px;background:repeating-linear-gradient(to right, var(--line) 0 6px, transparent 6px 12px);
+  }
+  .pstep .pnum{font-family:'Oswald',sans-serif;font-size:44px;font-weight:700;color:var(--steel-2);-webkit-text-stroke:1.5px var(--rust);color:transparent;margin-bottom:18px;}
+  .pstep h3{font-size:17px;margin-bottom:10px;}
+  .pstep p{font-size:14px;color:var(--gray-mid);}
+
+  /* ===== INVENTORY ===== */
+  .filter-bar{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:36px;}
+  .filter-btn{
+    background:transparent;border:1px solid var(--line);color:var(--gray-mid);
+    padding:9px 18px;border-radius:20px;font-size:13px;font-family:'Inter',sans-serif;cursor:pointer;transition:.15s;
+  }
+  .filter-btn.active, .filter-btn:hover{border-color:var(--rust);color:var(--offwhite);background:rgba(193,80,46,0.1);}
+  .inv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+  .inv-card{
+    background:var(--steel);border:1px solid var(--line);border-radius:6px;overflow:hidden;
+    display:flex;flex-direction:column;transition:transform .2s, border-color .2s;
+  }
+  .inv-card:hover{transform:translateY(-4px);border-color:var(--rust);}
+  .inv-media{
+    height:160px;background:linear-gradient(135deg,var(--steel-2),var(--charcoal));
+    display:flex;align-items:center;justify-content:center;position:relative;border-bottom:1px solid var(--line);
+  }
+  .inv-media .part-glyph{font-size:46px;opacity:0.5;}
+  .inv-condition{position:absolute;top:12px;left:12px;background:var(--charcoal);border:1px solid var(--hazard);color:var(--hazard);font-family:'IBM Plex Mono',monospace;font-size:10px;padding:3px 8px;border-radius:2px;letter-spacing:0.05em;}
+  .inv-body{padding:20px;display:flex;flex-direction:column;gap:10px;flex:1;}
+  .inv-body .cat{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--gray-mid);text-transform:uppercase;}
+  .inv-body h3{font-size:17px;}
+  .inv-body .fits{font-size:13px;color:var(--gray-mid);}
+  .inv-foot{display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:12px;border-top:1px dashed var(--line);}
+  .inv-foot .price{font-family:'Oswald',sans-serif;font-size:20px;color:var(--rust);font-weight:600;}
+  .inv-foot .stockno{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--gray-mid);}
+  .mini-btn{background:var(--steel-2);border:1px solid var(--line);color:var(--offwhite);font-size:12px;padding:8px 14px;border-radius:var(--radius);cursor:pointer;font-family:'Inter',sans-serif;transition:.15s;}
+  .mini-btn:hover{border-color:var(--rust);color:var(--rust);}
+
+  /* ===== SELL YOUR CAR / WRECKERS CTA ===== */
+  .sell-banner{
+    background:linear-gradient(120deg, var(--rust-dark), var(--rust));
+    border-radius:10px;
+    padding:56px 56px;
+    display:grid;
+    grid-template-columns:1.2fr 0.8fr;
+    gap:40px;
+    align-items:center;
+    position:relative;
+    overflow:hidden;
+  }
+  .sell-banner::after{content:"";position:absolute;right:-60px;top:-60px;width:260px;height:260px;border:26px solid rgba(255,255,255,0.08);border-radius:50%;}
+  .sell-banner h2{font-size:clamp(26px,3.2vw,38px);color:#fff2e8;margin-bottom:14px;}
+  .sell-banner p{color:rgba(255,242,232,0.85);margin-bottom:26px;max-width:440px;}
+  .sell-form{background:rgba(0,0,0,0.22);border-radius:8px;padding:24px;display:flex;flex-direction:column;gap:12px;}
+  .sell-form input, .sell-form select{
+    background:rgba(255,255,255,0.95);border:none;padding:12px 14px;border-radius:4px;font-family:'Inter',sans-serif;font-size:14px;color:#222;
+  }
+  .sell-form .btn{background:var(--charcoal);color:#fff2e8;}
+  .sell-form .btn:hover{background:#000;}
+
+  /* ===== STATS BAND ===== */
+  .stats-band{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .stat-item{padding:44px 30px;text-align:center;border-right:1px solid var(--line);}
+  .stat-item:last-child{border-right:none;}
+  .stat-item .num{font-family:'Oswald',sans-serif;font-size:42px;font-weight:700;color:var(--rust);}
+  .stat-item .lbl{font-size:13px;color:var(--gray-mid);text-transform:uppercase;letter-spacing:0.06em;margin-top:6px;}
+
+  /* ===== TESTIMONIALS ===== */
+  .testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+  .testi{background:var(--steel);border:1px solid var(--line);border-radius:6px;padding:26px;}
+  .testi .stars{color:var(--hazard);letter-spacing:2px;margin-bottom:14px;font-size:14px;}
+  .testi p{font-size:14.5px;color:var(--offwhite);margin-bottom:18px;}
+  .testi .who{font-size:13px;color:var(--gray-mid);font-family:'IBM Plex Mono',monospace;display:flex;justify-content:space-between;border-top:1px solid var(--line);padding-top:14px;}
+
+  /* ===== BRANDS STRIP ===== */
+  .brand-strip{display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;}
+  .brand-chip{
+    border:1px solid var(--line);padding:14px 22px;border-radius:4px;font-family:'Oswald',sans-serif;
+    letter-spacing:0.04em;color:var(--gray-mid);font-size:14px;flex:1;text-align:center;min-width:120px;
+  }
+
+  /* ===== FAQ ===== */
+  .faq-item{border-bottom:1px solid var(--line);}
+  .faq-q{
+    width:100%;text-align:left;background:none;border:none;color:var(--offwhite);
+    padding:22px 0;display:flex;justify-content:space-between;align-items:center;
+    font-family:'Oswald',sans-serif;font-size:16px;letter-spacing:0.02em;cursor:pointer;text-transform:none;
+  }
+  .faq-q .plus{font-family:'IBM Plex Mono',monospace;color:var(--rust);font-size:20px;transition:transform .2s;}
+  .faq-item.open .plus{transform:rotate(45deg);}
+  .faq-a{max-height:0;overflow:hidden;transition:max-height .25s ease;}
+  .faq-a p{padding:0 0 22px;color:var(--gray-mid);font-size:14.5px;max-width:760px;}
+
+  /* ===== CONTACT ===== */
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;}
+  .info-block{display:flex;gap:16px;margin-bottom:26px;}
+  .info-block .ic{width:40px;height:40px;border:1px solid var(--line);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--rust);flex-shrink:0;}
+  .info-block h4{font-size:15px;margin-bottom:4px;text-transform:none;}
+  .info-block p{font-size:14px;color:var(--gray-mid);}
+  .hours-table{width:100%;font-size:14px;margin-top:8px;}
+  .hours-table td{padding:6px 0;border-bottom:1px solid var(--line);color:var(--gray-mid);}
+  .hours-table td:last-child{text-align:right;color:var(--offwhite);font-family:'IBM Plex Mono',monospace;}
+  .quote-form{background:var(--steel);border:1px solid var(--line);border-radius:8px;padding:32px;}
+  .quote-form .row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px;}
+  .quote-form label{font-size:11px;text-transform:uppercase;letter-spacing:0.07em;color:var(--gray-mid);font-family:'IBM Plex Mono',monospace;display:block;margin-bottom:7px;}
+  .quote-form input, .quote-form select, .quote-form textarea{
+    width:100%;background:var(--charcoal);border:1px solid var(--line);color:var(--offwhite);
+    padding:12px;border-radius:var(--radius);font-family:'Inter',sans-serif;font-size:14px;
+  }
+  .quote-form textarea{resize:vertical;min-height:90px;}
+  .full-row{margin-bottom:14px;}
+  .form-msg{font-size:13px;margin-top:12px;font-family:'IBM Plex Mono',monospace;display:none;}
+  .form-msg.show{display:block;color:var(--hazard);}
+
+  /* ===== MAP PLACEHOLDER ===== */
+  .map-box{
+    height:220px;border:1px dashed var(--line);border-radius:6px;margin-top:30px;
+    background:repeating-linear-gradient(45deg, rgba(241,237,227,0.03) 0 10px, transparent 10px 20px);
+    display:flex;align-items:center;justify-content:center;color:var(--gray-mid);font-family:'IBM Plex Mono',monospace;font-size:13px;
+    flex-direction:column;gap:8px;
+  }
+
+  /* ===== FOOTER ===== */
+  footer{background:var(--steel);border-top:1px solid var(--line);padding:64px 0 26px;}
+  .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1.4fr;gap:40px;margin-bottom:50px;}
+  .footer-grid h4{font-size:13px;letter-spacing:0.08em;color:var(--gray-mid);margin-bottom:18px;}
+  .footer-grid ul{list-style:none;display:flex;flex-direction:column;gap:11px;}
+  .footer-grid ul a{font-size:14px;color:var(--offwhite);opacity:0.82;transition:opacity .15s;}
+  .footer-grid ul a:hover{opacity:1;color:var(--rust);}
+  .footer-about p{font-size:14px;color:var(--gray-mid);max-width:320px;margin:16px 0 20px;}
+  .social-row{display:flex;gap:10px;}
+  .social-row a{width:36px;height:36px;border:1px solid var(--line);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;}
+  .social-row a:hover{border-color:var(--rust);color:var(--rust);}
+  .newsletter{display:flex;gap:8px;margin-top:6px;}
+  .newsletter input{flex:1;background:var(--charcoal);border:1px solid var(--line);color:var(--offwhite);padding:11px;border-radius:var(--radius);font-size:13px;}
+  .footer-bottom{border-top:1px solid var(--line);padding-top:22px;display:flex;justify-content:space-between;font-size:12.5px;color:var(--gray-mid);flex-wrap:wrap;gap:10px;}
+  .footer-bottom a{color:var(--gray-mid);}
+  .footer-bottom a:hover{color:var(--offwhite);}
+
+  /* back to top */
+  .totop{position:fixed;bottom:26px;right:26px;width:48px;height:48px;border-radius:50%;background:var(--rust);color:#fff;display:flex;align-items:center;justify-content:center;border:none;cursor:pointer;font-size:18px;opacity:0;pointer-events:none;transition:opacity .2s;z-index:90;}
+  .totop.show{opacity:1;pointer-events:auto;}
+
+  @media (prefers-reduced-motion: reduce){
+    .ticker-track{animation:none;}
+    html{scroll-behavior:auto;}
+    *{transition:none !important;}
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width:1024px){
+    .hero-grid{grid-template-columns:1fr;}
+    .tag-grid{grid-template-columns:repeat(2,1fr);}
+    .process{grid-template-columns:repeat(2,1fr);gap:36px 0;}
+    .pstep:nth-child(2)::after{display:none;}
+    .inv-grid{grid-template-columns:repeat(2,1fr);}
+    .stats-band{grid-template-columns:repeat(2,1fr);}
+    .stat-item:nth-child(2){border-right:none;}
+    .testi-grid{grid-template-columns:1fr;}
+    .contact-grid{grid-template-columns:1fr;}
+    .footer-grid{grid-template-columns:1fr 1fr;}
+    .finder{grid-template-columns:1fr 1fr;margin-top:26px;}
+  }
+  @media (max-width:720px){
+    nav.links{display:none;}
+    .hamburger{display:flex;}
+    .hero{padding:56px 0 46px;}
+    .tag-grid{grid-template-columns:1fr;}
+    .process{grid-template-columns:1fr;}
+    .pstep::after{display:none;}
+    .inv-grid{grid-template-columns:1fr;}
+    .stats-band{grid-template-columns:1fr 1fr;}
+    .sell-banner{grid-template-columns:1fr;padding:34px 24px;}
+    .quote-form .row{grid-template-columns:1fr;}
+    .footer-grid{grid-template-columns:1fr;gap:30px;}
+    .finder{grid-template-columns:1fr;}
+    .hero-stats{gap:24px;}
+    section.section{padding:60px 0;}
+    .phone-pill{display:none;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <a href="#top" class="logo"><span class="bolt"></span>AFJ<span>AUTO PARTS</span></a>
+    <nav class="links">
+      <a href="#inventory">Home</a>
+      <a href="#services">Services</a>
+      <a href="#process">How It work</a>
+      <a href="#sell">Sell Your Car</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="nav-right">
+      <span class="phone-pill">☎ 0481260455</span>
+      <a href="#contact" class="btn btn-primary" style="padding:11px 20px;">Get a Quote</a>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#Home">Home</a>
+    <a href="#services">Services</a>
+    <a href="#Process">How It Work</a>
+    <a href="#sell">Sell Your Car</a>
+    <a href="#faq">FAQ</a>
+    <a href="#contact">Contact</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-grid">
+        <div>
+          <!-- <div class="tag-label">Est. 2003 · Licensed Auto Wreckers</div> -->
+          <h1>AFJ<br>AUTO PARTS <em>& WRECKERS.</em></h1>
+          <p class="lead">Over 40,000 quality-checked used, new, and aftermarket parts pulled from our own yard. Same-day pickup, nationwide shipping, and a real warranty on every part we sell.</p>
+          <div class="hero-ctas">
+            <a href="#Home" class="btn btn-primary">Search Inventory</a>
+            <a href="#sell" class="btn btn-outline">Sell / Scrap My Car</a>
+          </div>
+          <div class="hero-stats">
+            <div><span class="num">14+</span><span class="lbl">Years Trading</span></div>
+            <div><span class="num">40k</span><span class="lbl">Parts In Stock</span></div>
+            <div><span class="num">6,000+</span><span class="lbl">Vehicles Wrecked</span></div>
+            <div><span class="num">90-Day</span><span class="lbl">Warranty</span></div>
+          </div>
+        </div>
+        <div class="yard-tag">
+          <div class="tt-head">
+            <div><h3>Engine Assembly</h3></div>
+            <div class="stock">STOCK ?</div>
+          </div>
+          <div class="tt-row"><span>Make / Model</span><span>Toyota </span></div>
+          <div class="tt-row"><span>Year</span><span>2024</span></div>
+          <div class="tt-row"><span>Mileage</span><span>68,340 mi</span></div>
+          <div class="tt-row"><span>Condition</span><span>A — Grade</span></div>
+          <div class="tt-row"><span>Location</span><span>6 Neon St Sumner QLD 4074</span></div>
+          <div class="tt-price">
+            <span class="tt-badge">IN STOCK</span>
+            <span class="amt">$?</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- PART FINDER -->
+  <div class="wrap">
+    <div class="finder">
+      <div class="field">
+        <label for="f-make">Make</label>
+        <select id="f-make">
+          <option>Any Make</option>
+          <option>Toyota</option><option>Honda</option><option>Ford</option>
+          <option>Chevrolet</option><option>Nissan</option><option>Subaru</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="f-model">Model</label>
+        <select id="f-model">
+          <option>Any Model</option>
+          <option>Camry</option><option>Civic</option><option>F-150</option>
+          <option>Silverado</option><option>Altima</option><option>Outback</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="f-year">Year</label>
+        <select id="f-year">
+          <option>Any Year</option>
+          <option>2023</option><option>2021</option><option>2019</option>
+          <option>2017</option><option>2015</option><option>2012</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="f-part">Part / Keyword</label>
+        <input id="f-part" type="text" placeholder="e.g. transmission, door">
+      </div>
+      <button class="btn btn-primary" id="findBtn">Find Parts</button>
+    </div>
+  </div>
+
+  <!-- SERVICES -->
+  <section class="section" id="services">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="tag-label">What We Do</div>
+        <h2>Every part. Every service.<br>One yard.</h2>
+        <p>From a single used bumper to a full engine swap, sourced through our wrecking floor, parts network, and aftermarket suppliers.</p>
+      </div>
+      <div class="tag-grid">
+        <div class="tcard"><span class="num">SVC-01</span><div class="img"><img src="https://robbreport.com/wp-content/uploads/2024/04/cullinanbb.jpg?resize=1024,576" alt=""></div><h3>Used OEM Parts</h3><p>Genuine manufacturer parts pulled and tested from vehicles in our own yard.</p></div>
+        <div class="tcard"><span class="num">SVC-02</span><div class="icon">✚</div><h3>New Aftermarket</h3><p>Brand-new replacement parts for the jobs where used isn't the right call.</p></div>
+        <div class="tcard"><span class="num">SVC-03</span><div class="icon">◍</div><h3>Engines &amp; Transmissions</h3><p>Compression and road tested, sold with mileage, history, and a written warranty.</p></div>
+        <div class="tcard"><span class="num">SVC-04</span><div class="icon">▭</div><h3>Body &amp; Panels</h3><p>Doors, bumpers, fenders and glass, colour-matched wherever possible.</p></div>
+        <div class="tcard"><span class="num">SVC-05</span><div class="icon">⌘</div><h3>Wrecking &amp; Cash for Cars</h3><p>Free pickup and same-day payment for unwanted, damaged or end-of-life vehicles.</p></div>
+        <div class="tcard"><span class="num">SVC-06</span><div class="icon">⌗</div><h3>Interchange Lookup</h3><p>We cross-reference part numbers across makes to find every compatible fit.</p></div>
+        <div class="tcard"><span class="num">SVC-07</span><div class="icon">⇄</div><h3>Nationwide Shipping</h3><p>Palletised freight for heavy parts, tracked courier for everything else.</p></div>
+        <div class="tcard"><span class="num">SVC-08</span><div class="icon">✓</div><h3>Fitting &amp; Install</h3><p>Partner workshops can fit what you buy, booked straight from your invoice.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="section alt-bg" id="process">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="tag-label">How It Works</div>
+        <h2>From search to install, in four steps.</h2>
+      </div>
+      <div class="process">
+        <div class="pstep"><span class="pnum">01</span><h3>Search or Call</h3><p>Use the part finder above or call the yard — tell us the make, model, year and part.</p></div>
+        <div class="pstep"><span class="pnum">02</span><h3>Get a Quote</h3><p>We check live stock and condition grading, then send a price with photos on request.</p></div>
+        <div class="pstep"><span class="pnum">03</span><h3>Pickup or Delivery</h3><p>Collect from the yard same day, or have it shipped and tracked to your door.</p></div>
+        <div class="pstep"><span class="pnum">04</span><h3>Warranty Backed</h3><p>Every part ships with a written warranty and our returns policy, no exceptions.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INVENTORY -->
+  <section class="section" id="inventory">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="tag-label">Live Inventory</div>
+        <h2>Popular parts in stock now</h2>
+        <p>A snapshot of what's on the shelf this week. Full catalogue is larger — call or use the finder if you don't see it here.</p>
+      </div>
+      <div class="filter-bar" id="filterBar">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="engine">Engines</button>
+        <button class="filter-btn" data-filter="body">Body &amp; Panels</button>
+        <button class="filter-btn" data-filter="electrical">Electrical</button>
+        <button class="filter-btn" data-filter="interior">Interior</button>
+      </div>
+      <div class="inv-grid" id="invGrid">
+
+        <div class="inv-card" data-cat="engine">
+          <div class="inv-media"><span class="inv-condition">GRADE A</span><span class="part-glyph"><img src="https://robbreport.com/wp-content/uploads/2024/04/cullinanbb.jpg?resize=1024,576" alt=""></span></div>
+          <div class="inv-body">
+            <span class="cat">Engine · V6</span>
+            <h3>2018 Honda Accord 3.5L Engine</h3>
+            <p class="fits">Fits: Accord 2013–2019 · 54,200 mi</p>
+            <div class="inv-foot"><span class="price">$1,180</span><button class="mini-btn">Stock #4432</button></div>
+          </div>
+        </div>
+
+        <div class="inv-card" data-cat="body">
+          <div class="inv-media"><img src="websit/22793_2026_EV9_GT-2048x1152.jpg" alt=""><span class="inv-condition">GRADE B</span><span class="part-glyph">▭</span></div>
+          <div class="inv-body">
+            <span class="cat">Body · Door</span>
+            <h3>Ford F-150 Front Right Door</h3>
+            <p class="fits">Fits: F-150 2015–2020 · Oxford White</p>
+            <div class="inv-foot"><span class="price">$260</span><button class="mini-btn">Stock #4502-D</button></div>
+          </div>
+        </div>
+
+        <div class="inv-card" data-cat="electrical">
+          <div class="inv-media"><img src="websit/ghostbb.webp" alt=""><span class="inv-condition">GRADE A</span><span class="part-glyph">⚡</span></div>
+          <div class="inv-body">
+            <span class="cat">Electrical · Alternator</span>
+            <h3>Nissan Altima Alternator 130A</h3>
+            <p class="fits">Fits: Altima 2013–2018 · Tested</p>
+            <div class="inv-foot"><span class="price">$95</span><button class="mini-btn">Stock #4488-A</button></div>
+          </div>
+        </div>
+
+        <div class="inv-card" data-cat="engine">
+          <div class="inv-media"><img src="websit/RR_50_Most_Expensive_Cars_You_Can_Buy_Right_Now_Rolls_Royce_Ghost_Black_Badge.webp" alt=""><span class="inv-condition">GRADE A</span><span class="part-glyph">⚙</span></div>
+          <div class="inv-body">
+            <span class="cat">Drivetrain · Transmission</span>
+            <h3>Chevrolet Silverado 6-Speed Auto</h3>
+            <p class="fits">Fits: Silverado 2014–2019 · 61,800 mi</p>
+            <div class="inv-foot"><span class="price">$890</span><button class="mini-btn">Stock #4511-T</button></div>
+          </div>
+        </div>
+
+        <div class="inv-card" data-cat="interior">
+          <div class="inv-media"><img src="websit/spectre.webp" alt=""><span class="inv-condition">GRADE B</span><span class="part-glyph">◍</span></div>
+          <div class="inv-body">
+            <span class="cat">Interior · Seats</span>
+            <h3>Subaru Outback Front Seat Pair</h3>
+            <p class="fits">Fits: Outback 2015–2019 · Cloth, grey</p>
+            <div class="inv-foot"><span class="price">$210</span><button class="mini-btn">Stock #4498-S</button></div>
+          </div>
+        </div>
+
+        <div class="inv-card" data-cat="body">
+          <div class="inv-media"><img src="websit/u9-2560-750x430.jpg" alt=""><span class="inv-condition">GRADE A</span><span class="part-glyph">▭</span></div>
+          <div class="inv-body">
+            <span class="cat">Body · Bumper</span>
+            <h3>Toyota Camry Rear Bumper</h3>
+            <p class="fits">Fits: Camry 2018–2022 · Primed, no damage</p>
+            <div class="inv-foot"><span class="price">$175</span><button class="mini-btn">Stock #4471-B</button></div>
+          </div>
+        </div>
+
+        <div class="inv-card" data-cat="electrical">
+          <div class="inv-media"><img src="websit/zeekr-7x-can-be-charged-in-13-minutes-it-is-now-on-sale-in-europe-7455.jpg.webp" alt=""><span class="inv-condition">GRADE A</span><span class="part-glyph">⚡</span></div>
+          <div class="inv-body">
+            <span class="cat">Electrical · ECU</span>
+            <h3>Honda Civic Engine Control Unit</h3>
+            <p class="fits">Fits: Civic 2016–2021 · Plug tested</p>
+            <div class="inv-foot"><span class="price">$140</span><button class="mini-btn">Stock #4471-E</button></div>
+          </div>
+        </div>
+
+        <div class="inv-card" data-cat="interior">
+          <div class="inv-media"><img src="websit/car-engine-25780404.jpg" alt=""><span class="inv-condition">GRADE A</span><span class="part-glyph">◍</span></div>
+          <div class="inv-body">
+            <span class="cat">Interior · Dashboard</span>
+            <h3>Ford F-150 Dashboard Assembly</h3>
+            <p class="fits">Fits: F-150 2015–2020 · Black, no cracks</p>
+            <div class="inv-foot"><span class="price">$230</span><button class="mini-btn">Stock #4502-DB</button></div>
+          </div>
+        </div>
+
+        <div class="inv-card" data-cat="engine">
+          <div class="inv-media"><img src="websit/22793_2026_EV9_GT-2048x1152.jpg" alt=""><span class="inv-condition">GRADE B</span><span class="part-glyph">⚙</span></div>
+          <div class="inv-body">
+            <span class="cat">Engine · 4-Cyl</span>
+            <h3>Nissan Altima 2.5L Engine</h3>
+            <p class="fits">Fits: Altima 2013–2018 · 71,500 mi</p>
+            <div class="inv-foot"><span class="price">$720</span><button class="mini-btn">Stock #4488</button></div>
+          </div>
+        </div>
+
+      </div>
+      <div style="text-align:center;margin-top:40px;">
+        <a href="#contact" class="btn btn-outline">Request Full Catalogue</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SELL YOUR CAR -->
+  <section class="section" id="sell">
+    <div class="wrap">
+      <div class="sell-banner">
+        <div>
+          <div class="tag-label" style="color:#2c1006;">Cash For Cars</div>
+          <h2>Wrecking, scrapping, or selling? We'll buy it as-is.</h2>
+          <p>Running or not, damaged, written-off, or just old — get a firm quote in minutes and free pickup within 24 hours.</p>
+          <a href="tel:0481260455" class="btn" style="background:#1e1f1b;color:#fff2e8;">Call 0481260455</a>
+        </div>
+        <form class="sell-form" id="sellForm">
+          <input type="text" placeholder="Make &amp; Model" required>
+          <input type="text" placeholder="Year" required>
+          <select>
+            <option>Vehicle Condition</option>
+            <option>Running</option>
+            <option>Not Running</option>
+            <option>Written Off / Damaged</option>
+          </select>
+          <input type="tel" placeholder="Phone Number" required>
+          <button type="submit" class="btn">Get My Cash Quote</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <div class="stats-band">
+    <div class="stat-item"><div class="num">14+</div><div class="lbl">Years in Business</div></div>
+    <div class="stat-item"><div class="num">40,000+</div><div class="lbl">Parts In Stock</div></div>
+    <div class="stat-item"><div class="num">98%</div><div class="lbl">Customer Satisfaction</div></div>
+    <div class="stat-item"><div class="num">24hr</div><div class="lbl">Avg. Pickup Time</div></div>
+  </div>
+
+  <!-- TESTIMONIALS -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="tag-label">Customer Feedback</div>
+        <h2>What the yard's regulars say</h2>
+      </div>
+      <div class="testi-grid">
+        <div class="testi">
+          <div class="stars">★★★★★</div>
+          <p>Called about a transmission for my Silverado, had it delivered two days later and it's been running perfectly since. Fair price, no upselling.</p>
+          <div class="who"><span>D. Marsh</span><span>Verified Buyer</span></div>
+        </div>
+        <div class="testi">
+          <div class="stars">★★★★★</div>
+          <p>They picked up my written-off Civic same afternoon and paid on the spot. Easiest part of the whole insurance process, honestly.</p>
+          <div class="who"><span>R. Ibrahim</span><span>Verified Seller</span></div>
+        </div>
+        <div class="testi">
+          <div class="stars">★★★★☆</div>
+          <p>Needed a matching door panel and they tracked one down through their network in a day. Colour match was close enough not to repaint.</p>
+          <div class="who"><span>S. Okafor</span><span>Verified Buyer</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BRANDS -->
+  <section class="section alt-bg">
+    <div class="wrap">
+      <div class="section-head" style="margin-bottom:32px;">
+        <div class="tag-label">Makes We Stock</div>
+        <h2>Parts across every major make</h2>
+      </div>
+      <div class="brand-strip">
+        <div class="brand-chip">Toyota</div>
+        <div class="brand-chip">Honda</div>
+        <div class="brand-chip">Ford</div>
+        <div class="brand-chip">Chevrolet</div>
+        <div class="brand-chip">Nissan</div>
+        <div class="brand-chip">Subaru</div>
+        <div class="brand-chip">Hyundai</div>
+        <div class="brand-chip">Mazda</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section" id="faq">
+    <div class="wrap" style="max-width:820px;">
+      <div class="section-head">
+        <div class="tag-label">Questions</div>
+        <h2>Frequently asked</h2>
+      </div>
+      <div id="faqList">
+        <div class="faq-item">
+          <button class="faq-q">Do used parts come with a warranty?<span class="plus">+</span></button>
+          <div class="faq-a"><p>Yes. Every part sold, used or new, carries a minimum 90-day warranty. Engines and transmissions carry an extended 6-month warranty when installed by a licensed mechanic.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">How do I know if a part will fit my car?<span class="plus">+</span></button>
+          <div class="faq-a"><p>Give us your VIN or your make, model and year, and we'll cross-check fitment and interchange numbers before you buy, over the phone or online.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Can you pick up a car that doesn't run?<span class="plus">+</span></button>
+          <div class="faq-a"><p>Yes, non-running, damaged and written-off vehicles are exactly what we wreck. We arrange free towing and pay on collection.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Do you ship parts outside the local area?<span class="plus">+</span></button>
+          <div class="faq-a"><p>We ship nationwide. Small parts go by tracked courier; engines, transmissions and panels go by palletised freight with full tracking.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">What condition grades do your parts get?<span class="plus">+</span></button>
+          <div class="faq-a"><p>Grade A means light wear with no mechanical or cosmetic issues. Grade B means fully functional with visible wear or minor cosmetic marks. Grading is noted on every listing.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section alt-bg" id="contact">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="tag-label">Get In Touch</div>
+        <h2>Ask about a part, or get a quote</h2>
+      </div>
+      <div class="contact-grid">
+        <div>
+          <div class="info-block">
+            <div class="ic">☎</div>
+            <div><h4>Call Us</h4><p>0481260455 — Mon–Sat</p></div>
+          </div>
+          <div class="info-block">
+            <div class="ic">✉</div>
+            <div><h4>Email</h4><p>afjautoparts.com</p></div>
+          </div>
+          <div class="info-block">
+            <div class="ic">⌖</div>
+            <div><h4>Our Address</h4><p>6 Neon Street Sumner 4074 Queensland Australia.</p></div>
+          </div>
+          <table class="hours-table">
+            <tr><td>Monday – Friday</td><td>7:00 am – 4:00 pm</td></tr>
+            <tr><td>Saturday</td><td>7:00 – 1:00pm</td></tr>
+            <tr><td>Sunday</td><td>Closed</td></tr>
+          </table>
+          <div class="map-box">
+            <span>MAP</span>
+            <span>6 Neon Street Sumner 4074 Queensland Australia</span>
+          </div>
+        </div>
+
+        <form class="quote-form" id="quoteForm">
+          <div class="row">
+            <div><label for="qName">Full Name</label><input id="qName" type="text" required></div>
+            <div><label for="qPhone">Phone</label><input id="qPhone" type="tel" required></div>
+          </div>
+          <div class="row">
+            <div><label for="qMake">Vehicle Make</label><input id="qMake" type="text"></div>
+            <div><label for="qYear">Vehicle Year</label><input id="qYear" type="text"></div>
+          </div>
+          <div class="full-row">
+            <label for="qPart">Part Needed</label>
+            <input id="qPart" type="text" placeholder="e.g. front bumper, alternator">
+          </div>
+          <div class="full-row">
+            <label for="qMsg">Message</label>
+            <textarea id="qMsg" placeholder="Any extra detail — VIN, colour, condition preference..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width:100%;">Send Request</button>
+          <div class="form-msg" id="formMsg">Request received — we'll call you back within one business hour.</div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-about">
+        <a href="#top" class="logo"><span class="bolt">AFJ</span>Auto<span> PARTS</span></a>
+        <p>Family-run auto parts and wreckers, sourcing quality used, new and aftermarket parts since 2003.</p>
+        <div class="social-row">
+          <a href="#" aria-label="Facebook">f</a>
+          <a href="#" aria-label="Instagram">ig</a>
+          <a href="#" aria-label="YouTube">yt</a>
+        </div>
+      </div>
+      <div>
+        <h4>Shop</h4>
+        <ul>
+          <li><a href="#inventory">Inventory</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#sell">Sell Your Car</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#process">How It Works</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Yard Updates</h4>
+        <p style="font-size:13px;color:var(--gray-mid);margin-bottom:12px;">New stock alerts, straight to your inbox.</p>
+        <form class="newsletter" id="newsletterForm">
+          <input type="email" placeholder="you@email.com" required>
+          <button type="submit" class="mini-btn">Join</button>
+        </form>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>AFJ Auto Parts &amp; Wreckers. All rights reserved.</span>
+      <span><a href="#">Privacy Policy</a> · <a href="#">Terms of Service</a> · <a href="#">Warranty Terms</a></span>
+    </div>
+  </div>
+</footer>
+
+<button class="totop" id="totop" aria-label="Back to top">↑</button>
+
+<script>
+  // Mobile menu
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => {
+    const isOpen = mobileMenu.classList.toggle('open');
+    hamburger.setAttribute('aria-expanded', isOpen);
+  });
+  mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    mobileMenu.classList.remove('open');
+    hamburger.setAttribute('aria-expanded', 'false');
+  }));
+
+  // Inventory filter
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const invCards = document.querySelectorAll('.inv-card');
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const f = btn.dataset.filter;
+      invCards.forEach(card => {
+        card.style.display = (f === 'all' || card.dataset.cat === f) ? 'flex' : 'none';
+      });
+    });
+  });
+
+  // FAQ accordion
+  document.querySelectorAll('.faq-item').forEach(item => {
+    const q = item.querySelector('.faq-q');
+    const a = item.querySelector('.faq-a');
+    q.addEventListener('click', () => {
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(other => {
+        other.classList.remove('open');
+        other.querySelector('.faq-a').style.maxHeight = null;
+      });
+      if (!isOpen) {
+        item.classList.add('open');
+        a.style.maxHeight = a.scrollHeight + 'px';
+      }
+    });
+  });
+
+  // Part finder (demo behaviour — scrolls to inventory + shows message)
+  document.getElementById('findBtn').addEventListener('click', () => {
+    document.getElementById('inventory').scrollIntoView({behavior:'smooth'});
+  });
+
+  // Forms — front-end only demo confirmation
+  function handleDemoForm(formEl, message, buttonSelector){
+    formEl.addEventListener('submit', e => {
+      e.preventDefault();
+      const btn = formEl.querySelector(buttonSelector) || formEl.querySelector('button[type="submit"]');
+      const original = btn.textContent;
+      btn.textContent = message;
+      btn.disabled = true;
+      setTimeout(() => { btn.textContent = original; btn.disabled = false; formEl.reset(); }, 2400);
+    });
+  }
+  handleDemoForm(document.getElementById('sellForm'), 'Request Sent ✓');
+  handleDemoForm(document.getElementById('newsletterForm'), 'Joined ✓');
+
+  const quoteForm = document.getElementById('quoteForm');
+  const formMsg = document.getElementById('formMsg');
+  quoteForm.addEventListener('submit', e => {
+    e.preventDefault();
+    formMsg.classList.add('show');
+    quoteForm.querySelector('button[type="submit"]').textContent = 'Sent ✓';
+    setTimeout(() => {
+      quoteForm.reset();
+      quoteForm.querySelector('button[type="submit"]').textContent = 'Send Request';
+      formMsg.classList.remove('show');
+    }, 3200);
+  });
+
+  // Back to top
+  const totop = document.getElementById('totop');
+  window.addEventListener('scroll', () => {
+    totop.classList.toggle('show', window.scrollY > 600);
+  });
+  totop.addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
+</script>
+
+</body>
+</html>
