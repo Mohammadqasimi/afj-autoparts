@@ -166,7 +166,67 @@
   .section-head{max-width:640px;margin-bottom:52px;}
   .section-head h2{font-size:clamp(28px,3.6vw,44px);margin-bottom:16px;}
   .section-head p{color:var(--gray-mid);font-size:16px;}
-  .alt-bg{background:var(--steel);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .alt-bg{background:var(--steel);border-top:1px solid var(--line);border-bottom:1px solid var(--line); 
+  }
+
+  .TITTLE{
+    margin-left: 30px;
+    font-size: 30px;
+    margin-bottom: 100px;
+    color: #c1502e;
+
+  }
+
+  .brands-grid{
+    display:grid;
+    grid-template-columns:repeat(6,1fr);
+    gap:16px;
+    margin-top:-40px;
+    padding: 28px;
+}
+
+.brand-card{
+    height:100px;
+    border:1px solid #fffbfb;
+    z-index: 0.2;
+    border-radius:10px;
+    background:#34343449;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    transition:.3s;
+}
+
+.brand-card img{
+    width:85px;
+    height:50px;
+    object-fit:contain;
+    margin-bottom:15px;
+}
+
+.brand-card h3{
+    font-size:18px;
+    font-weight:700;
+    margin:0;
+}
+
+.all-brand .circle{
+    width:60px;
+    height:60px;
+    border-radius:50%;
+    background:#ff6600;
+    color:#fff;
+    font-size:32px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin-bottom:15px;
+}
+
+
+
+
 
   /* ===== PART FINDER ===== */
   .finder{
@@ -953,7 +1013,7 @@ color:#ff6b00;
   </section>
 
   <!-- BRANDS -->
-  <section class="section alt-bg">
+  <!-- <section class="section alt-bg">
     <div class="wrap">
       <div class="section-head" style="margin-bottom:32px;">
         <div class="tag-label">Makes We Stock</div>
@@ -970,7 +1030,85 @@ color:#ff6b00;
         <div class="brand-chip">Mazda</div>
       </div>
     </div>
-  </section>
+  </section> -->
+
+  <section class="brands-section">
+
+    <div class="TITTLE">
+        <h2>SHOP BY CAR BRAND</h2>
+        <span></span>
+    </div>
+
+    <div class="brands-grid">
+
+        <a href="#" class="brand-card">
+            <img src="toyta_logo_PNG1665 (1).png" alt="">
+            <h3>TOYOTA</h3>
+        </a>
+
+        <a href="#" class="brand-card">
+            <img src="honda-logo-png-19.png" alt="Honda">
+            <h3>HONDA</h3>
+        </a>
+
+        <a href="#" class="brand-card">
+            <img src="suzuki_PNG12291.png" alt="Suzuki">
+            <h3>SUZUKI</h3>
+        </a>
+
+        <a href="#" class="brand-card">
+            <img src="hydo_logo_PNG1645.png" alt="Hyundai">
+            <h3>HYUNDAI</h3>
+        </a>
+
+        <a href="#" class="brand-card">
+            <img src="kia.png" alt="Kia">
+            <h3>KIA</h3>
+        </a>
+
+        <a href="#" class="brand-card">
+            <img src="images/jaecoo.png" alt="Jaecoo">
+            <h3>JAECOO</h3>
+        </a>
+
+        <a href="#" class="brand-card">
+            <img src="Mercedes-Benz-Logo-768x478.png" alt="Mercedes">
+            <h3>MERCEDES</h3>
+        </a>
+
+        <a href="#" class="brand-card">
+            <img src="BMW-Logo-1963-1997.png" alt="BMW">
+            <h3>BMW</h3>
+        </a>
+
+        <a href="#" class="brand-card">
+            <img src="lexus.jpg" alt="Lexus">
+            <h3>LEXUS</h3>
+        </a>
+
+        <a href="#" class="brand-card">
+            <img src="Haval-Logo-500x281.png" alt="Haval">
+            <h3>HAVAL</h3>
+        </a>
+
+        <a href="#" class="brand-card">
+            <img src="BYD-Logo-500x281.png" alt="BYD">
+            <h3>BYD</h3>
+        </a>
+
+        <a href="#" class="brand-card">
+            <img src="honda-logo-png-19.png" alt="">
+            <h3>MAZDA</h3>
+        </a>
+
+    </div>
+
+</section>
+
+
+
+
+
 
   <!-- FAQ -->
   <section class="section" id="faq">
