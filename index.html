@@ -6,6 +6,10 @@
 <title>AFJ Auto Parts &amp; Wreckers — Used, New &amp; Aftermarket Parts</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+
 <style>
   :root{
     --charcoal:#181b1c;
@@ -87,7 +91,7 @@
   .nav-right{display:flex;align-items:center;gap:18px;}
   .phone-pill{
     display:flex;align-items:center;gap:8px;
-    font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--hazard);
+    font-family:'IBM Plex Mono',monospace;font-size:13px;color: whitesmoke;
   }
   .hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:6px;}
   .hamburger span{width:24px;height:2px;background:var(--offwhite);}
@@ -194,19 +198,128 @@
   .finder .btn{height:46px;white-space:nowrap;}
 
   /* ===== SERVICES / TAG CARDS ===== */
-  .tag-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+  /* .tag-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
   .tcard{
     background:var(--steel);
     border:1px solid var(--line);
     border-radius:6px;
     padding:26px 22px;
-    transition:border-color .2s, transform .2s;
-  }
-  .tcard:hover{border-color:var(--rust);transform:translateY(-4px);}
+    transition:border-color .2s, transform .2s; */
+  /* } */
+  /* .tcard:hover{border-color:var(--rust);transform:translateY(-4px);}
   .tcard .icon{width:44px;height:44px;border-radius:50%;background:rgba(193,80,46,0.14);color:var(--rust);display:flex;align-items:center;justify-content:center;margin-bottom:18px;font-size:20px;}
   .tcard h3{font-size:17px;margin-bottom:10px;letter-spacing:0.01em;}
   .tcard p{font-size:14px;color:var(--gray-mid);}
-  .tcard .num{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--hazard);display:block;margin-bottom:10px;}
+  .tcard .num{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--hazard);display:block;margin-bottom:10px;} */
+
+
+
+
+  
+
+.services{
+width:95%;
+margin:60px auto;
+position:relative;
+} 
+
+.title{
+text-align:center;
+font-size:40px;
+color:#fff;
+margin-bottom:40px;
+} 
+
+.swiper{
+width:100%;
+padding:px 60px;
+}
+
+.swiper-slide{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+grid-template-rows:repeat(2,245px);
+gap:20px;
+}
+
+.card{
+position:relative;
+overflow:hidden;
+height: 240px;
+border-radius:20px;
+cursor:pointer;
+box-shadow:0 15px 35px rgba(0,0,0,.35);
+transition: .3s;
+}
+
+.card img{
+width:100%;
+height:100%;
+object-fit:cover;
+transition:.6s;
+}
+
+.card:hover img{
+transform:scale(1.15);
+}
+
+.overlay{
+position:absolute;
+inset:0;
+background:linear-gradient(to top,rgba(0,0,0,.8),rgba(0,0,0,.15));
+}
+
+.content{
+position:absolute;
+left:18px;
+right:18px;
+bottom:18px;
+color:#fff;
+z-index:5;
+}
+
+.content span{
+color:#ff9800;
+font-size:13px;
+font-weight:600;
+}
+
+.content h3{
+margin:8px 0;
+font-size:20px;
+}
+
+.content p{
+font-size:14px;
+line-height:1.5;
+}
+
+.swiper-button-next,
+.swiper-button-prev{
+color:#fff;
+background:#ff6b00;
+width:55px;
+height:55px;
+border-radius:50%;
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after{
+font-size:22px;
+font-weight:bold;
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover{
+background:#fff;
+color:#ff6b00;
+}
+
+
+
+
+
+
 
   /* ===== PROCESS ===== */
   .process{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative;}
@@ -395,7 +508,7 @@
 
 <header>
   <div class="nav">
-    <a href="#top" class="logo"><span class="bolt"></span>AFJ<span>AUTO PARTS</span></a>
+    <a href="#top" class="logo"><img width="100" src="logo1.png" alt=""></a>
     <nav class="links">
       <a href="#inventory">Home</a>
       <a href="#services">Services</a>
@@ -507,18 +620,144 @@
         <h2>Every part. Every service.<br>One yard.</h2>
         <p>From a single used bumper to a full engine swap, sourced through our wrecking floor, parts network, and aftermarket suppliers.</p>
       </div>
-      <div class="tag-grid">
-        <div class="tcard"><span class="num">SVC-01</span><div class="img"><img src="https://robbreport.com/wp-content/uploads/2024/04/cullinanbb.jpg?resize=1024,576" alt=""></div><h3>Used OEM Parts</h3><p>Genuine manufacturer parts pulled and tested from vehicles in our own yard.</p></div>
-        <div class="tcard"><span class="num">SVC-02</span><div class="icon">✚</div><h3>New Aftermarket</h3><p>Brand-new replacement parts for the jobs where used isn't the right call.</p></div>
-        <div class="tcard"><span class="num">SVC-03</span><div class="icon">◍</div><h3>Engines &amp; Transmissions</h3><p>Compression and road tested, sold with mileage, history, and a written warranty.</p></div>
-        <div class="tcard"><span class="num">SVC-04</span><div class="icon">▭</div><h3>Body &amp; Panels</h3><p>Doors, bumpers, fenders and glass, colour-matched wherever possible.</p></div>
-        <div class="tcard"><span class="num">SVC-05</span><div class="icon">⌘</div><h3>Wrecking &amp; Cash for Cars</h3><p>Free pickup and same-day payment for unwanted, damaged or end-of-life vehicles.</p></div>
-        <div class="tcard"><span class="num">SVC-06</span><div class="icon">⌗</div><h3>Interchange Lookup</h3><p>We cross-reference part numbers across makes to find every compatible fit.</p></div>
-        <div class="tcard"><span class="num">SVC-07</span><div class="icon">⇄</div><h3>Nationwide Shipping</h3><p>Palletised freight for heavy parts, tracked courier for everything else.</p></div>
-        <div class="tcard"><span class="num">SVC-08</span><div class="icon">✓</div><h3>Fitting &amp; Install</h3><p>Partner workshops can fit what you buy, booked straight from your invoice.</p></div>
-      </div>
-    </div>
-  </section>
+      <!-- <div class="tag-grid">
+        <div class="tcard"><span class="num">SVC-01</span><div class="img"><img src="22793_2026_EV9_GT-2048x1152.jpg" alt=""></div><h3>Used OEM Parts</h3><p>Genuine manufacturer parts pulled and tested from vehicles in our own yard.</p></div>
+        <div class="tcard"><span class="num">SVC-02</span><div class="icon"></div><h3>New Aftermarket</h3><p>Brand-new replacement parts for the jobs where used isn't the right call.</p></div>
+        <div class="tcard"><span class="num">SVC-03</span><div class="icon"></div><h3>Engines &amp; Transmissions</h3><p>Compression and road tested, sold with mileage, history, and a written warranty.</p></div>
+        <div class="tcard"><span class="num">SVC-04</span><div class="icon"></div><h3>Body &amp; Panels</h3><p>Doors, bumpers, fenders and glass, colour-matched wherever possible.</p></div>
+        <div class="tcard"><span class="num">SVC-05</span><div class="icon"></div><h3>Wrecking &amp; Cash for Cars</h3><p>Free pickup and same-day payment for unwanted, damaged or end-of-life vehicles.</p></div>
+        <div class="tcard"><span class="num">SVC-06</span><div class="icon"></div><h3>Interchange Lookup</h3><p>We cross-reference part numbers across makes to find every compatible fit.</p></div>
+        <div class="tcard"><span class="num">SVC-07</span><div class="icon"></div><h3>Nationwide Shipping</h3><p>Palletised freight for heavy parts, tracked courier for everything else.</p></div>
+        <div class="tcard"><span class="num">SVC-08</span><div class="icon"></div><h3>Fitting &amp; Install</h3><p>Partner workshops can fit what you buy, booked straight from your invoice.</p></div>
+      </div> -->
+
+     
+ <div class="swiper mySwiper"> 
+
+<div class="swiper-wrapper">
+    <div class="swiper-wrapper"></div>
+
+    <!-- Slide 1 -->
+<div class="swiper-slide">
+
+<div class="card">
+<img src="car-engine-25780404.jpg">
+<div class="overlay"></div>
+<div class="content">
+<span>SVC-01</span>
+<h3>Engines</h3>
+<p>Quality tested engines.</p>
+</div>
+</div>
+
+<div class="card">
+<img src="22793_2026_EV9_GT-2048x1152.jpg">
+<div class="overlay"></div>
+<div class="content">
+<span>SVC-02</span>
+<h3>Transmission</h3>
+<p>Manual & Automatic.</p>
+</div>
+</div>
+
+<div class="card">
+<img src="Dacia_Logan_MCV_Model_2009_05.JPG">
+<div class="overlay"></div>
+<div class="content">
+<span>SVC-03</span>
+<h3>Doors</h3>
+<p>OEM body parts.</p>
+</div>
+</div>
+
+<div class="card">
+<img src="logo-removebg-preview.png">
+<div class="overlay"></div>
+<div class="content">
+<span>SVC-04</span>
+<h3>Headlights</h3>
+<p>Original headlights.</p>
+</div>
+</div>
+
+<div class="card">
+<img src="ghostbb.webp">
+<div class="overlay"></div>
+<div class="content">
+<span>SVC-05</span>
+<h3>Bumpers</h3>
+<p>Front & Rear bumpers.</p>
+</div>
+</div>
+
+<div class="card">
+<img src="images/car6.jpg">
+<div class="overlay"></div>
+<div class="content">
+<span>SVC-06</span>
+<h3>Mirrors</h3>
+<p>Electric mirrors.</p>
+</div>
+</div>
+
+<div class="card">
+<img src="RR_50_Most_Expensive_Cars_You_Can_Buy_Right_Now_Rolls_Royce_Ghost_Black_Badge.webp">
+<div class="overlay"></div>
+<div class="content">
+<span>SVC-07</span>
+<h3>Suspension</h3>
+<p>High quality parts.</p>
+</div>
+</div>
+
+<div class="card">
+<img src="spectre.webp">
+<div class="overlay"></div>
+<div class="content">
+<span>SVC-08</span>
+<h3>New Arrivals</h3>
+<p>Latest stock available.</p>
+</div>
+</div>
+
+
+
+</div>
+
+<!-- Slide 2 -->
+
+<div class="swiper-slide">
+
+<div class="card"><img src="22793_2026_EV9_GT-2048x1152.jpg"><div class="overlay"></div><div class="content"><span>SVC-09</span><h3>Radiator</h3></div></div>
+
+<div class="card"><img src="car-engine-25780404.jpg"><div class="overlay"></div><div class="content"><span>SVC-10</span><h3>Alternator</h3></div></div>
+
+<div class="card"><img src="Dacia_Logan_MCV_Model_2009_05.JPG"><div class="overlay"></div><div class="content"><span>SVC-11</span><h3>Starter</h3></div></div>
+
+<div class="card"><img src="ghostbb.webp"><div class="overlay"></div><div class="content"><span>SVC-12</span><h3>Steering</h3></div></div>
+
+<div class="card"><img src="RR_50_Most_Expensive_Cars_You_Can_Buy_Right_Now_Rolls_Royce_Ghost_Black_Badge.webp"><div class="overlay"></div><div class="content"><span>SVC-13</span><h3>Wheel</h3></div></div>
+
+<div class="card"><img src="spectre.webp"><div class="overlay"></div><div class="content"><span>SVC-14</span><h3>Tyres</h3></div></div>
+
+<div class="card"><img src="zeekr-7x-can-be-charged-in-13-minutes-it-is-now-on-sale-in-europe-7455.jpg.webp"><div class="overlay"></div><div class="content"><span>SVC-15</span><h3>Battery</h3></div></div>
+
+<div class="card"><img src="u9-2560-750x430.jpg"><div class="overlay"></div><div class="content"><span>SVC-16</span><h3>ABS Module</h3></div></div>
+
+
+</div>
+
+</div>
+
+<div class="swiper-button-next"></div>
+
+<div class="swiper-button-prev"></div>
+
+</div>
+ 
+
+
+  
 
   <!-- PROCESS -->
   <section class="section alt-bg" id="process">
@@ -535,6 +774,8 @@
       </div>
     </div>
   </section>
+
+
 
   <!-- INVENTORY -->
   <section class="section" id="inventory">
@@ -564,7 +805,7 @@
         </div>
 
         <div class="inv-card" data-cat="body">
-          <div class="inv-media"><img src="22793_2026_EV9_GT-2048x1152.jpg" alt=""><span class="inv-condition">GRADE B</span><span class="part-glyph">▭</span></div>
+          <div class="inv-media"><img src="22793_2026_EV9_GT-2048x1152.jpg" alt=""><span class="inv-condition">GRADE B</span><span class="part-glyph"></span></div>
           <div class="inv-body">
             <span class="cat">Body · Door</span>
             <h3>Ford F-150 Front Right Door</h3>
@@ -574,7 +815,7 @@
         </div>
 
         <div class="inv-card" data-cat="electrical">
-          <div class="inv-media"><img src="ghostbb.webp" alt=""><span class="inv-condition">GRADE A</span><span class="part-glyph">⚡</span></div>
+          <div class="inv-media"><img src="ghostbb.webp" alt=""><span class="inv-condition">GRADE A</span><span class="part-glyph"></span></div>
           <div class="inv-body">
             <span class="cat">Electrical · Alternator</span>
             <h3>Nissan Altima Alternator 130A</h3>
@@ -584,7 +825,7 @@
         </div>
 
         <div class="inv-card" data-cat="engine">
-          <div class="inv-media"><img src="RR_50_Most_Expensive_Cars_You_Can_Buy_Right_Now_Rolls_Royce_Ghost_Black_Badge.webp" alt=""><span class="inv-condition">GRADE A</span><span class="part-glyph">⚙</span></div>
+          <div class="inv-media"><img src="RR_50_Most_Expensive_Cars_You_Can_Buy_Right_Now_Rolls_Royce_Ghost_Black_Badge.webp" alt=""><span class="inv-condition">GRADE A</span><span class="part-glyph"></span></div>
           <div class="inv-body">
             <span class="cat">Drivetrain · Transmission</span>
             <h3>Chevrolet Silverado 6-Speed Auto</h3>
@@ -594,7 +835,7 @@
         </div>
 
         <div class="inv-card" data-cat="interior">
-          <div class="inv-media"><img src="spectre.webp" alt=""><span class="inv-condition">GRADE B</span><span class="part-glyph">◍</span></div>
+          <div class="inv-media"><img src="spectre.webp" alt=""><span class="inv-condition">GRADE B</span><span class="part-glyph"></span></div>
           <div class="inv-body">
             <span class="cat">Interior · Seats</span>
             <h3>Subaru Outback Front Seat Pair</h3>
@@ -604,7 +845,7 @@
         </div>
 
         <div class="inv-card" data-cat="body">
-          <div class="inv-media"><img src="u9-2560-750x430.jpg" alt=""><span class="inv-condition">GRADE A</span><span class="part-glyph">▭</span></div>
+          <div class="inv-media"><img src="u9-2560-750x430.jpg" alt=""><span class="inv-condition">GRADE A</span><span class="part-glyph"></span></div>
           <div class="inv-body">
             <span class="cat">Body · Bumper</span>
             <h3>Toyota Camry Rear Bumper</h3>
@@ -614,7 +855,7 @@
         </div>
 
         <div class="inv-card" data-cat="electrical">
-          <div class="inv-media"><img src="zeekr-7x-can-be-charged-in-13-minutes-it-is-now-on-sale-in-europe-7455.jpg.webp" alt=""><span class="inv-condition">GRADE A</span><span class="part-glyph">⚡</span></div>
+          <div class="inv-media"><img src="zeekr-7x-can-be-charged-in-13-minutes-it-is-now-on-sale-in-europe-7455.jpg.webp" alt=""><span class="inv-condition">GRADE A</span></span></div>
           <div class="inv-body">
             <span class="cat">Electrical · ECU</span>
             <h3>Honda Civic Engine Control Unit</h3>
@@ -624,7 +865,7 @@
         </div>
 
         <div class="inv-card" data-cat="interior">
-          <div class="inv-media"><img src="car-engine-25780404.jpg" alt=""><span class="inv-condition">GRADE A</span><span class="part-glyph">◍</span></div>
+          <div class="inv-media"><img src="car-engine-25780404.jpg" alt=""><span class="inv-condition">GRADE A</span><span class="part-glyph"></span></div>
           <div class="inv-body">
             <span class="cat">Interior · Dashboard</span>
             <h3>Ford F-150 Dashboard Assembly</h3>
@@ -634,7 +875,7 @@
         </div>
 
         <div class="inv-card" data-cat="engine">
-          <div class="inv-media"><img src="22793_2026_EV9_GT-2048x1152.jpg" alt=""><span class="inv-condition">GRADE B</span><span class="part-glyph">⚙</span></div>
+          <div class="inv-media"><img src="22793_2026_EV9_GT-2048x1152.jpg" alt=""><span class="inv-condition">GRADE B</span><span class="part-glyph"></span></div>
           <div class="inv-body">
             <span class="cat">Engine · 4-Cyl</span>
             <h3>Nissan Altima 2.5L Engine</h3>
@@ -825,7 +1066,8 @@
   <div class="wrap">
     <div class="footer-grid">
       <div class="footer-about">
-        <a href="#top" class="logo"><span class="bolt">AFJ</span>Auto<span> PARTS</span></a>
+        <!-- <a href="#top" class="logo"><span class="bolt">AFJ</span>Auto<span> PARTS</span></a> -->
+          <a href="#top" class="logo"><img width="100" src="logo1.png" alt=""></a>
         <p>Family-run auto parts and wreckers, sourcing quality used, new and aftermarket parts since 2003.</p>
         <div class="social-row">
           <a href="#" aria-label="Facebook">f</a>
@@ -867,7 +1109,13 @@
 
 <button class="totop" id="totop" aria-label="Back to top">↑</button>
 
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
 <script>
+
+
   // Mobile menu
   const hamburger = document.getElementById('hamburger');
   const mobileMenu = document.getElementById('mobileMenu');
@@ -879,6 +1127,42 @@
     mobileMenu.classList.remove('open');
     hamburger.setAttribute('aria-expanded', 'false');
   }));
+
+ 
+
+const swiper = new Swiper(".mySwiper",{
+
+loop:true,
+
+speed:900,
+
+spaceBetween:20,
+
+grabCursor:true,
+
+autoplay:{
+
+delay:3000,
+
+disableOnInteraction:false,
+
+},
+
+navigation:{
+
+nextEl:".swiper-button-next",
+
+prevEl:".swiper-button-prev",
+
+},
+
+effect:"slide",
+
+});
+
+
+
+
 
   // Inventory filter
   const filterBtns = document.querySelectorAll('.filter-btn');
@@ -950,6 +1234,9 @@
   });
   totop.addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
 </script>
+
+
+
 
 </body>
 </html>
