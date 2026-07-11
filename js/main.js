@@ -24,25 +24,37 @@ document.addEventListener("DOMContentLoaded", () => {
 /* ---------------- Contact / map / WhatsApp / phone ---------------- */
 function renderBusinessInfo() {
   // Phone pill + call buttons
-  document.querySelectorAll("[data-phone-display]").forEach(el => (el.textContent = BUSINESS.phoneDisplay));
-  document.querySelectorAll("[data-tel-link]").forEach(el => (el.href = `tel:${BUSINESS.phoneTel}`));
+  document
+    .querySelectorAll("[data-phone-display]")
+    .forEach((el) => (el.textContent = BUSINESS.phoneDisplay));
+  document
+    .querySelectorAll("[data-tel-link]")
+    .forEach((el) => (el.href = `tel:${BUSINESS.phoneTel}`));
 
   // WhatsApp links
   const waHref = `https://wa.me/${BUSINESS.whatsappNumber}?text=${encodeURIComponent(BUSINESS.whatsappDefaultMessage)}`;
-  document.querySelectorAll("[data-whatsapp-link]").forEach(el => (el.href = waHref));
+  document
+    .querySelectorAll("[data-whatsapp-link]")
+    .forEach((el) => (el.href = waHref));
 
   // Email
-  document.querySelectorAll("[data-email-display]").forEach(el => (el.textContent = BUSINESS.email));
-  document.querySelectorAll("[data-email-link]").forEach(el => (el.href = `mailto:${BUSINESS.email}`));
+  document
+    .querySelectorAll("[data-email-display]")
+    .forEach((el) => (el.textContent = BUSINESS.email));
+  document
+    .querySelectorAll("[data-email-link]")
+    .forEach((el) => (el.href = `mailto:${BUSINESS.email}`));
 
   // Address
-  document.querySelectorAll("[data-address-display]").forEach(el => (el.textContent = BUSINESS.address));
+  document
+    .querySelectorAll("[data-address-display]")
+    .forEach((el) => (el.textContent = BUSINESS.address));
 
   // Hours table
   const hoursTable = document.getElementById("hoursTable");
   if (hoursTable) {
     hoursTable.innerHTML = BUSINESS.hours
-      .map(h => `<tr><td>${h.day}</td><td>${h.time}</td></tr>`)
+      .map((h) => `<tr><td>${h.day}</td><td>${h.time}</td></tr>`)
       .join("");
   }
 
@@ -53,38 +65,25 @@ function renderBusinessInfo() {
   }
 }
 
-/* ---------------- Services swiper (chunked into slides of 8) ---------------- */
+/* ---------------- Services swiper (one card = one slide; Swiper handles how many show per view) ---------------- */
 function renderServices() {
   const wrapper = document.getElementById("servicesWrapper");
   if (!wrapper) return;
 
-  const chunkSize = 8;
-  const slides = [];
-  for (let i = 0; i < SERVICES.length; i += chunkSize) {
-    slides.push(SERVICES.slice(i, i + chunkSize));
-  }
-
-  wrapper.innerHTML = slides
-    .map(
-      slideItems => `
-      <div class="swiper-slide">
-        ${slideItems
-          .map(
-            s => `
-          <div class="card">
-            <img src="${s.img}" alt="${s.title}" loading="lazy">
-            <div class="overlay"></div>
-            <div class="content">
-              <span>${s.code}</span>
-              <h3>${s.title}</h3>
-              ${s.desc ? `<p>${s.desc}</p>` : ""}
-            </div>
-          </div>`
-          )
-          .join("")}
-      </div>`
-    )
-    .join("");
+  wrapper.innerHTML = SERVICES.map(
+    (s) => `
+    <div class="swiper-slide">
+      <div class="card">
+        <img src="${s.img}" alt="${s.title}" loading="lazy">
+        <div class="overlay"></div>
+        <div class="content">
+          <span>${s.code}</span>
+          <h3>${s.title}</h3>
+          ${s.desc ? `<p>${s.desc}</p>` : ""}
+        </div>
+      </div>
+    </div>`,
+  ).join("");
 }
 
 /* ---------------- Inventory ---------------- */
@@ -93,7 +92,7 @@ function renderInventory() {
   if (!grid) return;
 
   grid.innerHTML = INVENTORY.map(
-    item => `
+    (item) => `
     <div class="inv-card" data-cat="${item.cat}">
       <div class="inv-media">
         <img src="${item.img}" alt="${item.title}" loading="lazy">
@@ -108,19 +107,20 @@ function renderInventory() {
           <button class="mini-btn" type="button">${item.stock}</button>
         </div>
       </div>
-    </div>`
+    </div>`,
   ).join("");
 }
 
 function initInventoryFilter() {
   const filterBtns = document.querySelectorAll(".filter-btn");
-  filterBtns.forEach(btn => {
+  filterBtns.forEach((btn) => {
     btn.addEventListener("click", () => {
-      filterBtns.forEach(b => b.classList.remove("active"));
+      filterBtns.forEach((b) => b.classList.remove("active"));
       btn.classList.add("active");
       const f = btn.dataset.filter;
-      document.querySelectorAll(".inv-card").forEach(card => {
-        card.style.display = f === "all" || card.dataset.cat === f ? "flex" : "none";
+      document.querySelectorAll(".inv-card").forEach((card) => {
+        card.style.display =
+          f === "all" || card.dataset.cat === f ? "flex" : "none";
       });
     });
   });
@@ -132,11 +132,11 @@ function renderBrands() {
   if (!grid) return;
 
   grid.innerHTML = BRANDS.map(
-    b => `
+    (b) => `
     <a href="#inventory" class="brand-card" data-brand="${b.name}">
       <img src="${b.img}" alt="${b.name}" loading="lazy">
       <h3>${b.name}</h3>
-    </a>`
+    </a>`,
   ).join("");
 }
 
@@ -146,12 +146,12 @@ function renderTestimonials() {
   if (!grid) return;
 
   grid.innerHTML = TESTIMONIALS.map(
-    t => `
+    (t) => `
     <div class="testi">
       <div class="stars">${"★".repeat(t.stars)}${"☆".repeat(5 - t.stars)}</div>
       <p>${t.text}</p>
       <div class="who"><span>${t.name}</span><span>${t.role}</span></div>
-    </div>`
+    </div>`,
   ).join("");
 }
 
@@ -161,21 +161,21 @@ function renderFaqs() {
   if (!list) return;
 
   list.innerHTML = FAQS.map(
-    f => `
+    (f) => `
     <div class="faq-item">
       <button class="faq-q" type="button">${f.q}<span class="plus">+</span></button>
       <div class="faq-a"><p>${f.a}</p></div>
-    </div>`
+    </div>`,
   ).join("");
 }
 
 function initFaqAccordion() {
-  document.querySelectorAll(".faq-item").forEach(item => {
+  document.querySelectorAll(".faq-item").forEach((item) => {
     const q = item.querySelector(".faq-q");
     const a = item.querySelector(".faq-a");
     q.addEventListener("click", () => {
       const isOpen = item.classList.contains("open");
-      document.querySelectorAll(".faq-item").forEach(other => {
+      document.querySelectorAll(".faq-item").forEach((other) => {
         other.classList.remove("open");
         other.querySelector(".faq-a").style.maxHeight = null;
       });
@@ -197,26 +197,36 @@ function initMobileMenu() {
     const isOpen = mobileMenu.classList.toggle("open");
     hamburger.setAttribute("aria-expanded", isOpen);
   });
-  mobileMenu.querySelectorAll("a").forEach(a =>
+  mobileMenu.querySelectorAll("a").forEach((a) =>
     a.addEventListener("click", () => {
       mobileMenu.classList.remove("open");
       hamburger.setAttribute("aria-expanded", "false");
-    })
+    }),
   );
 }
 
-/* ---------------- Swiper ---------------- */
+/* ---------------- Swiper (true responsive carousel) ---------------- */
 function initSwiper() {
   if (typeof Swiper === "undefined") return;
   // eslint-disable-next-line no-new
   new Swiper(".mySwiper", {
     loop: true,
-    speed: 900,
-    spaceBetween: 20,
+    speed: 700,
+    spaceBetween: 16,
     grabCursor: true,
-    autoplay: { delay: 3000, disableOnInteraction: false },
-    navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" },
-    effect: "slide"
+    slidesPerView: 1.15,
+    autoplay: { delay: 2800, disableOnInteraction: false },
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+    pagination: { el: ".swiper-pagination", clickable: true },
+    breakpoints: {
+      480: { slidesPerView: 1.4, spaceBetween: 16 },
+      640: { slidesPerView: 2.2, spaceBetween: 18 },
+      900: { slidesPerView: 3, spaceBetween: 20 },
+      1200: { slidesPerView: 4, spaceBetween: 22 },
+    },
   });
 }
 
@@ -236,7 +246,9 @@ function initBackToTop() {
   window.addEventListener("scroll", () => {
     totop.classList.toggle("show", window.scrollY > 600);
   });
-  totop.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+  totop.addEventListener("click", () =>
+    window.scrollTo({ top: 0, behavior: "smooth" }),
+  );
 }
 
 /* ---------------- Forms — real submission to backend (Resend email) ---------------- */
@@ -251,10 +263,11 @@ function initForms() {
       make: val("qMake"),
       year: val("qYear"),
       part: val("qPart"),
-      message: val("qMsg")
+      message: val("qMsg"),
     }),
     successText: "Sent ✓",
-    successMsg: "Request received — we'll call you back within one business hour."
+    successMsg:
+      "Request received — we'll call you back within one business hour.",
   });
 
   wireForm({
@@ -264,16 +277,16 @@ function initForms() {
       makeModel: val("sMakeModel"),
       year: val("sYear"),
       condition: val("sCondition"),
-      phone: val("sPhone")
+      phone: val("sPhone"),
     }),
-    successText: "Request Sent ✓"
+    successText: "Request Sent ✓",
   });
 
   wireForm({
     formId: "newsletterForm",
     endpoint: "/api/newsletter",
     buildPayload: () => ({ email: val("nlEmail") }),
-    successText: "Joined ✓"
+    successText: "Joined ✓",
   });
 }
 
@@ -282,14 +295,21 @@ function val(id) {
   return el ? el.value.trim() : "";
 }
 
-function wireForm({ formId, endpoint, buildPayload, successText, msgElId, successMsg }) {
+function wireForm({
+  formId,
+  endpoint,
+  buildPayload,
+  successText,
+  msgElId,
+  successMsg,
+}) {
   const form = document.getElementById(formId);
   if (!form) return;
   const submitBtn = form.querySelector('button[type="submit"]');
   const msgEl = msgElId ? document.getElementById(msgElId) : null;
   const originalText = submitBtn ? submitBtn.textContent : "";
 
-  form.addEventListener("submit", async e => {
+  form.addEventListener("submit", async (e) => {
     e.preventDefault();
     if (!form.reportValidity()) return;
 
@@ -303,7 +323,7 @@ function wireForm({ formId, endpoint, buildPayload, successText, msgElId, succes
       const res = await fetch(endpoint, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload)
+        body: JSON.stringify(payload),
       });
       if (!res.ok) throw new Error("Request failed");
 
@@ -317,7 +337,8 @@ function wireForm({ formId, endpoint, buildPayload, successText, msgElId, succes
       console.error(err);
       if (submitBtn) submitBtn.textContent = "Couldn't send — try again";
       if (msgEl) {
-        msgEl.textContent = "Something went wrong sending your request. Please call us instead.";
+        msgEl.textContent =
+          "Something went wrong sending your request. Please call us instead.";
         msgEl.classList.add("show");
       }
     } finally {
