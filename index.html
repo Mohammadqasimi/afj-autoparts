@@ -21,6 +21,7 @@
     --rust-dark:#93361c;
     --hazard:#e0ac2b;
     --gray-mid:#9aa2a3;
+    --whatsapp:#25D366;
     --line: rgba(241,237,227,0.14);
     --radius: 3px;
   }
@@ -68,6 +69,7 @@
   .btn-primary:hover{background:var(--rust-dark);transform:translateY(-2px);}
   .btn-outline{background:transparent;color:var(--offwhite);border:1.5px solid var(--line);}
   .btn-outline:hover{border-color:var(--hazard);color:var(--hazard);transform:translateY(-2px);}
+  .btn:disabled{opacity:.65;cursor:not-allowed;transform:none;}
   .btn:focus-visible{outline:2px solid var(--hazard);outline-offset:3px;}
   a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible{outline:2px solid var(--hazard);outline-offset:2px;}
 
@@ -81,17 +83,20 @@
   .nav{
     display:flex;align-items:center;justify-content:space-between;
     padding:18px 28px;max-width:1200px;margin:0 auto;
+    gap:16px;
   }
-  .logo{display:flex;align-items:center;gap:10px;font-family:'Oswald',sans-serif;font-weight:700;font-size:20px;letter-spacing:0.03em;text-transform:uppercase;}
+  .logo{display:flex;align-items:center;gap:10px;font-family:'Oswald',sans-serif;font-weight:700;font-size:20px;letter-spacing:0.03em;text-transform:uppercase;flex-shrink:0;}
   .logo span{color:var(--rust);}
+  .logo img{width:100px;height:auto;}
   .logo .bolt{width:26px;height:26px;border:2px solid var(--rust);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--rust);font-family:'IBM Plex Mono',monospace;}
-  nav.links{display:flex;gap:32px;font-size:14px;font-weight:500;}
+  nav.links{display:flex;gap:32px;font-size:14px;font-weight:500;flex-wrap:wrap;}
   nav.links a{position:relative;padding:6px 0;color:var(--gray-mid);transition:color .15s;}
   nav.links a:hover{color:var(--offwhite);}
-  .nav-right{display:flex;align-items:center;gap:18px;}
+  .nav-right{display:flex;align-items:center;gap:18px;flex-shrink:0;}
   .phone-pill{
     display:flex;align-items:center;gap:8px;
     font-family:'IBM Plex Mono',monospace;font-size:13px;color: whitesmoke;
+    white-space:nowrap;
   }
   .hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:6px;}
   .hamburger span{width:24px;height:2px;background:var(--offwhite);}
@@ -102,12 +107,10 @@
   /* ===== HERO ===== */
   .hero{
     background: url('https://images.pexels.com/photos/27703432/pexels-photo-27703432.jpeg?_gl=1*1r7p9m7*_ga*OTY0NjQ1NDI5LjE3ODI5OTY0NjQ.*_ga_8JE65Q40S6*czE3ODI5OTY0NjMkbzEkZzAkdDE3ODI5OTY0NjMkajYwJGwwJGgw');
-    /* radial-gradient(ellipse at 80% -10%, rgba(193,80,46,0.22), transparent 55%),
-      repeating-linear-gradient(135deg, rgba(241,237,227,0.025) 0 2px, transparent 2px 26px),
-      var(--charcoal); */
     padding:90px 0 70px;
     position: relative;
     background-size: cover;
+    background-position:center;
     border-bottom:1px solid var(--line);
   }
   .hero::after{
@@ -120,8 +123,8 @@
     background-color: black;
 
   }
-  .hero-grid{position: relative;z-index: 2;;display:grid;grid-template-columns:1.15fr 0.85fr;gap:50px;align-items:center;}
-  .hero h1{position:relative;z-index: 2;font-size:clamp(38px,5.4vw,68px);margin-bottom:20px;}
+  .hero-grid{position: relative;z-index: 2;display:grid;grid-template-columns:1.15fr 0.85fr;gap:50px;align-items:center;}
+  .hero h1{position:relative;z-index: 2;font-size:clamp(34px,5.4vw,68px);margin-bottom:20px;word-break:break-word;}
   .hero h1 em{position:relative;z-index: 2;font-style:normal;color:var(--rust);}
   .hero p.lead{position:relative;z-index: 2;font-size:17px;color:var(--gray-mid);max-width:520px;margin-bottom:32px;}
   .hero-ctas{position:relative;z-index: 2;display:flex;gap:16px;flex-wrap:wrap;margin-bottom:36px;}
@@ -144,11 +147,11 @@
     content:"";position:absolute;top:-9px;left:26px;width:18px;height:18px;
     background:var(--charcoal);border:1.5px solid var(--line);border-radius:50%;
   }
-  .yard-tag .tt-head{display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px dashed var(--line);padding-bottom:14px;margin-bottom:14px;}
+  .yard-tag .tt-head{display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px dashed var(--line);padding-bottom:14px;margin-bottom:14px;flex-wrap:wrap;gap:8px;}
   .yard-tag .tt-head .stock{font-family:'IBM Plex Mono',monospace;color:var(--hazard);font-size:13px;}
   .yard-tag h3{font-size:26px;margin-bottom:4px;}
-  .yard-tag .tt-row{display:flex;justify-content:space-between;font-size:13px;color:var(--gray-mid);padding:7px 0;border-bottom:1px solid var(--line);font-family:'IBM Plex Mono',monospace;}
-  .yard-tag .tt-row span:last-child{color:var(--offwhite);}
+  .yard-tag .tt-row{display:flex;justify-content:space-between;gap:12px;font-size:13px;color:var(--gray-mid);padding:7px 0;border-bottom:1px solid var(--line);font-family:'IBM Plex Mono',monospace;}
+  .yard-tag .tt-row span:last-child{color:var(--offwhite);text-align:right;}
   .yard-tag .tt-row:last-of-type{border-bottom:none;}
   .yard-tag .tt-price{display:flex;justify-content:space-between;align-items:baseline;margin-top:16px;}
   .yard-tag .tt-price .amt{font-family:'Oswald',sans-serif;font-size:32px;color:var(--rust);font-weight:700;}
@@ -164,31 +167,31 @@
   /* ===== SECTION GENERIC ===== */
   .section{padding:88px 0;}
   .section-head{max-width:640px;margin-bottom:52px;}
-  .section-head h2{font-size:clamp(28px,3.6vw,44px);margin-bottom:16px;}
+  .section-head h2{font-size:clamp(26px,3.6vw,44px);margin-bottom:16px;}
   .section-head p{color:var(--gray-mid);font-size:16px;}
-  .alt-bg{background:var(--steel);border-top:1px solid var(--line);border-bottom:1px solid var(--line); 
+  .alt-bg{background:var(--steel);border-top:1px solid var(--line);border-bottom:1px solid var(--line);
   }
 
   .TITTLE{
-    margin-left: 30px;
-    font-size: 30px;
-    margin-bottom: 100px;
+    text-align:center;
+    font-size:30px;
+    margin-bottom:44px;
     color: #c1502e;
-
+    padding:0 20px;
   }
 
   .brands-grid{
     display:grid;
     grid-template-columns:repeat(6,1fr);
     gap:16px;
-    margin-top:-40px;
     padding: 28px;
+    max-width:1200px;
+    margin:0 auto;
 }
 
 .brand-card{
     height:100px;
     border:1px solid #fffbfb;
-    z-index: 0.2;
     border-radius:10px;
     background:#34343449;
     display:flex;
@@ -196,7 +199,9 @@
     justify-content:center;
     align-items:center;
     transition:.3s;
+    padding:10px;
 }
+.brand-card:hover{border-color:var(--rust);transform:translateY(-3px);}
 
 .brand-card img{
     width:85px;
@@ -206,27 +211,11 @@
 }
 
 .brand-card h3{
-    font-size:18px;
+    font-size:14px;
     font-weight:700;
     margin:0;
+    text-align:center;
 }
-
-.all-brand .circle{
-    width:60px;
-    height:60px;
-    border-radius:50%;
-    background:#ff6600;
-    color:#fff;
-    font-size:32px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    margin-bottom:15px;
-}
-
-
-
-
 
   /* ===== PART FINDER ===== */
   .finder{
@@ -243,7 +232,7 @@
     z-index:5;
     box-shadow:0 40px 70px -30px rgba(0,0,0,0.7);
   }
-  .field{display:flex;flex-direction:column;gap:8px;}
+  .field{display:flex;flex-direction:column;gap:8px;min-width:0;}
   .field label{font-size:11px;text-transform:uppercase;letter-spacing:0.08em;color:var(--gray-mid);font-family:'IBM Plex Mono',monospace;}
   .field select, .field input{
     background:var(--charcoal);
@@ -253,133 +242,111 @@
     border-radius:var(--radius);
     font-size:14px;
     font-family:'Inter',sans-serif;
+    width:100%;
+    min-width:0;
   }
   .field select:focus, .field input:focus{border-color:var(--rust);outline:none;}
   .finder .btn{height:46px;white-space:nowrap;}
 
-  /* ===== SERVICES / TAG CARDS ===== */
-  /* .tag-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
-  .tcard{
-    background:var(--steel);
-    border:1px solid var(--line);
-    border-radius:6px;
-    padding:26px 22px;
-    transition:border-color .2s, transform .2s; */
-  /* } */
-  /* .tcard:hover{border-color:var(--rust);transform:translateY(-4px);}
-  .tcard .icon{width:44px;height:44px;border-radius:50%;background:rgba(193,80,46,0.14);color:var(--rust);display:flex;align-items:center;justify-content:center;margin-bottom:18px;font-size:20px;}
-  .tcard h3{font-size:17px;margin-bottom:10px;letter-spacing:0.01em;}
-  .tcard p{font-size:14px;color:var(--gray-mid);}
-  .tcard .num{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--hazard);display:block;margin-bottom:10px;} */
+  /* ===== SERVICES SWIPER ===== */
+  .services{
+    width:95%;
+    margin:60px auto;
+    position:relative;
+  }
 
+  .title{
+    text-align:center;
+    font-size:40px;
+    color:#fff;
+    margin-bottom:40px;
+  }
 
+  .swiper{
+    width:100%;
+    padding:0 60px;
+  }
 
+  .swiper-slide{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    grid-template-rows:repeat(2,245px);
+    gap:20px;
+  }
 
-  
+  .card{
+    position:relative;
+    overflow:hidden;
+    height: 240px;
+    border-radius:20px;
+    cursor:pointer;
+    box-shadow:0 15px 35px rgba(0,0,0,.35);
+    transition: .3s;
+    background:var(--steel-2);
+  }
 
-.services{
-width:95%;
-margin:60px auto;
-position:relative;
-} 
+  .card img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:.6s;
+  }
 
-.title{
-text-align:center;
-font-size:40px;
-color:#fff;
-margin-bottom:40px;
-} 
+  .card:hover img{
+    transform:scale(1.15);
+  }
 
-.swiper{
-width:100%;
-padding:px 60px;
-}
+  .overlay{
+    position:absolute;
+    inset:0;
+    background:linear-gradient(to top,rgba(0,0,0,.8),rgba(0,0,0,.15));
+  }
 
-.swiper-slide{
-display:grid;
-grid-template-columns:repeat(4,1fr);
-grid-template-rows:repeat(2,245px);
-gap:20px;
-}
+  .content{
+    position:absolute;
+    left:18px;
+    right:18px;
+    bottom:18px;
+    color:#fff;
+    z-index:5;
+  }
 
-.card{
-position:relative;
-overflow:hidden;
-height: 240px;
-border-radius:20px;
-cursor:pointer;
-box-shadow:0 15px 35px rgba(0,0,0,.35);
-transition: .3s;
-}
+  .content span{
+    color:#ff9800;
+    font-size:13px;
+    font-weight:600;
+  }
 
-.card img{
-width:100%;
-height:100%;
-object-fit:cover;
-transition:.6s;
-}
+  .content h3{
+    margin:8px 0;
+    font-size:20px;
+  }
 
-.card:hover img{
-transform:scale(1.15);
-}
+  .content p{
+    font-size:14px;
+    line-height:1.5;
+  }
 
-.overlay{
-position:absolute;
-inset:0;
-background:linear-gradient(to top,rgba(0,0,0,.8),rgba(0,0,0,.15));
-}
+  .swiper-button-next,
+  .swiper-button-prev{
+    color:#fff;
+    background:#ff6b00;
+    width:55px;
+    height:55px;
+    border-radius:50%;
+  }
 
-.content{
-position:absolute;
-left:18px;
-right:18px;
-bottom:18px;
-color:#fff;
-z-index:5;
-}
+  .swiper-button-next::after,
+  .swiper-button-prev::after{
+    font-size:22px;
+    font-weight:bold;
+  }
 
-.content span{
-color:#ff9800;
-font-size:13px;
-font-weight:600;
-}
-
-.content h3{
-margin:8px 0;
-font-size:20px;
-}
-
-.content p{
-font-size:14px;
-line-height:1.5;
-}
-
-.swiper-button-next,
-.swiper-button-prev{
-color:#fff;
-background:#ff6b00;
-width:55px;
-height:55px;
-border-radius:50%;
-}
-
-.swiper-button-next::after,
-.swiper-button-prev::after{
-font-size:22px;
-font-weight:bold;
-}
-
-.swiper-button-next:hover,
-.swiper-button-prev:hover{
-background:#fff;
-color:#ff6b00;
-}
-
-
-
-
-
-
+  .swiper-button-next:hover,
+  .swiper-button-prev:hover{
+    background:#fff;
+    color:#ff6b00;
+  }
 
   /* ===== PROCESS ===== */
   .process{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative;}
@@ -407,14 +374,16 @@ color:#ff6b00;
   .inv-media{
     height:160px;background:linear-gradient(135deg,var(--steel-2),var(--charcoal));
     display:flex;align-items:center;justify-content:center;position:relative;border-bottom:1px solid var(--line);
+    overflow:hidden;
   }
+  .inv-media img{width:100%;height:100%;object-fit:cover;}
   .inv-media .part-glyph{font-size:46px;opacity:0.5;}
-  .inv-condition{position:absolute;top:12px;left:12px;background:var(--charcoal);border:1px solid var(--hazard);color:var(--hazard);font-family:'IBM Plex Mono',monospace;font-size:10px;padding:3px 8px;border-radius:2px;letter-spacing:0.05em;}
+  .inv-condition{position:absolute;top:12px;left:12px;background:var(--charcoal);border:1px solid var(--hazard);color:var(--hazard);font-family:'IBM Plex Mono',monospace;font-size:10px;padding:3px 8px;border-radius:2px;letter-spacing:0.05em;z-index:2;}
   .inv-body{padding:20px;display:flex;flex-direction:column;gap:10px;flex:1;}
   .inv-body .cat{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--gray-mid);text-transform:uppercase;}
   .inv-body h3{font-size:17px;}
   .inv-body .fits{font-size:13px;color:var(--gray-mid);}
-  .inv-foot{display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:12px;border-top:1px dashed var(--line);}
+  .inv-foot{display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:12px;border-top:1px dashed var(--line);gap:8px;flex-wrap:wrap;}
   .inv-foot .price{font-family:'Oswald',sans-serif;font-size:20px;color:var(--rust);font-weight:600;}
   .inv-foot .stockno{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--gray-mid);}
   .mini-btn{background:var(--steel-2);border:1px solid var(--line);color:var(--offwhite);font-size:12px;padding:8px 14px;border-radius:var(--radius);cursor:pointer;font-family:'Inter',sans-serif;transition:.15s;}
@@ -433,18 +402,18 @@ color:#ff6b00;
     overflow:hidden;
   }
   .sell-banner::after{content:"";position:absolute;right:-60px;top:-60px;width:260px;height:260px;border:26px solid rgba(255,255,255,0.08);border-radius:50%;}
-  .sell-banner h2{font-size:clamp(26px,3.2vw,38px);color:#fff2e8;margin-bottom:14px;}
+  .sell-banner h2{font-size:clamp(24px,3.2vw,38px);color:#fff2e8;margin-bottom:14px;}
   .sell-banner p{color:rgba(255,242,232,0.85);margin-bottom:26px;max-width:440px;}
-  .sell-form{background:rgba(0,0,0,0.22);border-radius:8px;padding:24px;display:flex;flex-direction:column;gap:12px;}
+  .sell-form{background:rgba(0,0,0,0.22);border-radius:8px;padding:24px;display:flex;flex-direction:column;gap:12px;position:relative;z-index:2;}
   .sell-form input, .sell-form select{
-    background:rgba(255,255,255,0.95);border:none;padding:12px 14px;border-radius:4px;font-family:'Inter',sans-serif;font-size:14px;color:#222;
+    background:rgba(255,255,255,0.95);border:none;padding:12px 14px;border-radius:4px;font-family:'Inter',sans-serif;font-size:14px;color:#222;width:100%;
   }
   .sell-form .btn{background:var(--charcoal);color:#fff2e8;}
   .sell-form .btn:hover{background:#000;}
 
   /* ===== STATS BAND ===== */
   .stats-band{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
-  .stat-item{padding:44px 30px;text-align:center;border-right:1px solid var(--line);}
+  .stat-item{padding:44px 20px;text-align:center;border-right:1px solid var(--line);}
   .stat-item:last-child{border-right:none;}
   .stat-item .num{font-family:'Oswald',sans-serif;font-size:42px;font-weight:700;color:var(--rust);}
   .stat-item .lbl{font-size:13px;color:var(--gray-mid);text-transform:uppercase;letter-spacing:0.06em;margin-top:6px;}
@@ -454,23 +423,16 @@ color:#ff6b00;
   .testi{background:var(--steel);border:1px solid var(--line);border-radius:6px;padding:26px;}
   .testi .stars{color:var(--hazard);letter-spacing:2px;margin-bottom:14px;font-size:14px;}
   .testi p{font-size:14.5px;color:var(--offwhite);margin-bottom:18px;}
-  .testi .who{font-size:13px;color:var(--gray-mid);font-family:'IBM Plex Mono',monospace;display:flex;justify-content:space-between;border-top:1px solid var(--line);padding-top:14px;}
-
-  /* ===== BRANDS STRIP ===== */
-  .brand-strip{display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;}
-  .brand-chip{
-    border:1px solid var(--line);padding:14px 22px;border-radius:4px;font-family:'Oswald',sans-serif;
-    letter-spacing:0.04em;color:var(--gray-mid);font-size:14px;flex:1;text-align:center;min-width:120px;
-  }
+  .testi .who{font-size:13px;color:var(--gray-mid);font-family:'IBM Plex Mono',monospace;display:flex;justify-content:space-between;gap:10px;border-top:1px solid var(--line);padding-top:14px;flex-wrap:wrap;}
 
   /* ===== FAQ ===== */
   .faq-item{border-bottom:1px solid var(--line);}
   .faq-q{
     width:100%;text-align:left;background:none;border:none;color:var(--offwhite);
-    padding:22px 0;display:flex;justify-content:space-between;align-items:center;
+    padding:22px 0;display:flex;justify-content:space-between;align-items:center;gap:14px;
     font-family:'Oswald',sans-serif;font-size:16px;letter-spacing:0.02em;cursor:pointer;text-transform:none;
   }
-  .faq-q .plus{font-family:'IBM Plex Mono',monospace;color:var(--rust);font-size:20px;transition:transform .2s;}
+  .faq-q .plus{font-family:'IBM Plex Mono',monospace;color:var(--rust);font-size:20px;transition:transform .2s;flex-shrink:0;}
   .faq-item.open .plus{transform:rotate(45deg);}
   .faq-a{max-height:0;overflow:hidden;transition:max-height .25s ease;}
   .faq-a p{padding:0 0 22px;color:var(--gray-mid);font-size:14.5px;max-width:760px;}
@@ -480,7 +442,8 @@ color:#ff6b00;
   .info-block{display:flex;gap:16px;margin-bottom:26px;}
   .info-block .ic{width:40px;height:40px;border:1px solid var(--line);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--rust);flex-shrink:0;}
   .info-block h4{font-size:15px;margin-bottom:4px;text-transform:none;}
-  .info-block p{font-size:14px;color:var(--gray-mid);}
+  .info-block p, .info-block a{font-size:14px;color:var(--gray-mid);}
+  .info-block a:hover{color:var(--rust);}
   .hours-table{width:100%;font-size:14px;margin-top:8px;}
   .hours-table td{padding:6px 0;border-bottom:1px solid var(--line);color:var(--gray-mid);}
   .hours-table td:last-child{text-align:right;color:var(--offwhite);font-family:'IBM Plex Mono',monospace;}
@@ -496,13 +459,12 @@ color:#ff6b00;
   .form-msg{font-size:13px;margin-top:12px;font-family:'IBM Plex Mono',monospace;display:none;}
   .form-msg.show{display:block;color:var(--hazard);}
 
-  /* ===== MAP PLACEHOLDER ===== */
+  /* ===== MAP ===== */
   .map-box{
-    height:220px;border:1px dashed var(--line);border-radius:6px;margin-top:30px;
-    background:repeating-linear-gradient(45deg, rgba(241,237,227,0.03) 0 10px, transparent 10px 20px);
-    display:flex;align-items:center;justify-content:center;color:var(--gray-mid);font-family:'IBM Plex Mono',monospace;font-size:13px;
-    flex-direction:column;gap:8px;
+    height:220px;border:1px solid var(--line);border-radius:6px;margin-top:30px;
+    overflow:hidden;position:relative;
   }
+  .map-box iframe{width:100%;height:100%;border:0;filter:grayscale(0.35) contrast(1.05);display:block;}
 
   /* ===== FOOTER ===== */
   footer{background:var(--steel);border-top:1px solid var(--line);padding:64px 0 26px;}
@@ -512,18 +474,22 @@ color:#ff6b00;
   .footer-grid ul a{font-size:14px;color:var(--offwhite);opacity:0.82;transition:opacity .15s;}
   .footer-grid ul a:hover{opacity:1;color:var(--rust);}
   .footer-about p{font-size:14px;color:var(--gray-mid);max-width:320px;margin:16px 0 20px;}
-  .social-row{display:flex;gap:10px;}
+  .social-row{display:flex;gap:10px;flex-wrap:wrap;}
   .social-row a{width:36px;height:36px;border:1px solid var(--line);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;}
   .social-row a:hover{border-color:var(--rust);color:var(--rust);}
-  .newsletter{display:flex;gap:8px;margin-top:6px;}
-  .newsletter input{flex:1;background:var(--charcoal);border:1px solid var(--line);color:var(--offwhite);padding:11px;border-radius:var(--radius);font-size:13px;}
+  .newsletter{display:flex;gap:8px;margin-top:6px;flex-wrap:wrap;}
+  .newsletter input{flex:1;min-width:140px;background:var(--charcoal);border:1px solid var(--line);color:var(--offwhite);padding:11px;border-radius:var(--radius);font-size:13px;}
   .footer-bottom{border-top:1px solid var(--line);padding-top:22px;display:flex;justify-content:space-between;font-size:12.5px;color:var(--gray-mid);flex-wrap:wrap;gap:10px;}
   .footer-bottom a{color:var(--gray-mid);}
   .footer-bottom a:hover{color:var(--offwhite);}
 
-  /* back to top */
-  .totop{position:fixed;bottom:26px;right:26px;width:48px;height:48px;border-radius:50%;background:var(--rust);color:#fff;display:flex;align-items:center;justify-content:center;border:none;cursor:pointer;font-size:18px;opacity:0;pointer-events:none;transition:opacity .2s;z-index:90;}
+  /* floating action buttons */
+  .fab-stack{position:fixed;bottom:26px;right:26px;display:flex;flex-direction:column;gap:14px;z-index:90;align-items:flex-end;}
+  .totop, .fab-whatsapp{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:none;cursor:pointer;font-size:18px;transition:opacity .2s, transform .15s;}
+  .totop{background:var(--rust);color:#fff;opacity:0;pointer-events:none;}
   .totop.show{opacity:1;pointer-events:auto;}
+  .fab-whatsapp{background:var(--whatsapp);color:#fff;font-size:24px;box-shadow:0 10px 24px -8px rgba(0,0,0,0.6);}
+  .fab-whatsapp:hover, .totop:hover{transform:translateY(-3px);}
 
   @media (prefers-reduced-motion: reduce){
     .ticker-track{animation:none;}
@@ -534,22 +500,25 @@ color:#ff6b00;
   /* ===== RESPONSIVE ===== */
   @media (max-width:1024px){
     .hero-grid{grid-template-columns:1fr;}
-    .tag-grid{grid-template-columns:repeat(2,1fr);}
     .process{grid-template-columns:repeat(2,1fr);gap:36px 0;}
     .pstep:nth-child(2)::after{display:none;}
     .inv-grid{grid-template-columns:repeat(2,1fr);}
     .stats-band{grid-template-columns:repeat(2,1fr);}
     .stat-item:nth-child(2){border-right:none;}
-    .testi-grid{grid-template-columns:1fr;}
+    .testi-grid{grid-template-columns:1fr 1fr;}
     .contact-grid{grid-template-columns:1fr;}
     .footer-grid{grid-template-columns:1fr 1fr;}
     .finder{grid-template-columns:1fr 1fr;margin-top:26px;}
+    .brands-grid{grid-template-columns:repeat(4,1fr);}
+    .swiper-slide{grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(3,200px);}
+    .swiper{padding:0 50px;}
   }
-  @media (max-width:720px){
+  @media (max-width:900px){
     nav.links{display:none;}
     .hamburger{display:flex;}
+  }
+  @media (max-width:720px){
     .hero{padding:56px 0 46px;}
-    .tag-grid{grid-template-columns:1fr;}
     .process{grid-template-columns:1fr;}
     .pstep::after{display:none;}
     .inv-grid{grid-template-columns:1fr;}
@@ -561,6 +530,26 @@ color:#ff6b00;
     .hero-stats{gap:24px;}
     section.section{padding:60px 0;}
     .phone-pill{display:none;}
+    .brands-grid{grid-template-columns:repeat(3,1fr);gap:12px;padding:20px 12px;}
+    .brand-card{height:86px;}
+    .brand-card img{width:60px;height:36px;margin-bottom:8px;}
+    .brand-card h3{font-size:11px;}
+    .swiper-slide{grid-template-columns:repeat(2,1fr);grid-template-rows:repeat(4,190px);}
+    .swiper{padding:0 44px;}
+    .testi-grid{grid-template-columns:1fr;}
+    .swiper-button-next,.swiper-button-prev{width:42px;height:42px;}
+    .fab-stack{bottom:18px;right:16px;}
+  }
+  @media (max-width:480px){
+    .wrap{padding:0 18px;}
+    .hero h1{font-size:34px;}
+    .yard-tag{padding:18px;}
+    .brands-grid{grid-template-columns:repeat(2,1fr);}
+    .swiper-slide{grid-template-columns:1fr;grid-template-rows:repeat(8,190px);}
+    .swiper{padding:0 12px;}
+    .nav{padding:14px 18px;}
+    .logo img{width:80px;}
+    .nav-right{gap:10px;}
   }
 </style>
 </head>
@@ -568,7 +557,7 @@ color:#ff6b00;
 
 <header>
   <div class="nav">
-    <a href="#top" class="logo"><img width="100" src="logo1.png" alt=""></a>
+    <a href="#top" class="logo"><img src="logo1.png" alt="AFJ Auto Parts logo"></a>
     <nav class="links">
       <a href="#inventory">Home</a>
       <a href="#services">Services</a>
@@ -578,7 +567,7 @@ color:#ff6b00;
       <a href="#contact">Contact</a>
     </nav>
     <div class="nav-right">
-      <span class="phone-pill">☎ 0481260455</span>
+      <a href="#" class="phone-pill" data-tel-link><i class="fa-solid fa-phone"></i>&nbsp;<span data-phone-display></span></a>
       <a href="#contact" class="btn btn-primary" style="padding:11px 20px;">Get a Quote</a>
       <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
         <span></span><span></span><span></span>
@@ -586,12 +575,13 @@ color:#ff6b00;
     </div>
   </div>
   <div class="mobile-menu" id="mobileMenu">
-    <a href="#Home">Home</a>
+    <a href="#top">Home</a>
     <a href="#services">Services</a>
-    <a href="#Process">How It Work</a>
+    <a href="#process">How It Work</a>
     <a href="#sell">Sell Your Car</a>
     <a href="#faq">FAQ</a>
     <a href="#contact">Contact</a>
+    <a href="#" data-whatsapp-link target="_blank" rel="noopener">WhatsApp Us</a>
   </div>
 </header>
 
@@ -602,11 +592,10 @@ color:#ff6b00;
     <div class="wrap">
       <div class="hero-grid">
         <div>
-          <!-- <div class="tag-label">Est. 2003 · Licensed Auto Wreckers</div> -->
           <h1>AFJ<br>AUTO PARTS <em>& WRECKERS.</em></h1>
           <p class="lead">Over 40,000 quality-checked used, new, and aftermarket parts pulled from our own yard. Same-day pickup, nationwide shipping, and a real warranty on every part we sell.</p>
           <div class="hero-ctas">
-            <a href="#Home" class="btn btn-primary">Search Inventory</a>
+            <a href="#inventory" class="btn btn-primary">Search Inventory</a>
             <a href="#sell" class="btn btn-outline">Sell / Scrap My Car</a>
           </div>
           <div class="hero-stats">
@@ -619,23 +608,21 @@ color:#ff6b00;
         <div class="yard-tag">
           <div class="tt-head">
             <div><h3>Engine Assembly</h3></div>
-            <div class="stock">STOCK ?</div>
+            <div class="stock">STOCK #4432</div>
           </div>
-          <div class="tt-row"><span>Make / Model</span><span>Toyota </span></div>
+          <div class="tt-row"><span>Make / Model</span><span>Toyota</span></div>
           <div class="tt-row"><span>Year</span><span>2024</span></div>
           <div class="tt-row"><span>Mileage</span><span>68,340 mi</span></div>
           <div class="tt-row"><span>Condition</span><span>A — Grade</span></div>
-          <div class="tt-row"><span>Location</span><span>6 Neon St Sumner QLD 4074</span></div>
+          <div class="tt-row"><span>Location</span><span data-address-display>6 Neon St Sumner QLD 4074</span></div>
           <div class="tt-price">
             <span class="tt-badge">IN STOCK</span>
-            <span class="amt">$?</span>
+            <span class="amt">$1,180</span>
           </div>
         </div>
       </div>
     </div>
   </section>
-
-
 
   <!-- PART FINDER -->
   <div class="wrap">
@@ -668,7 +655,7 @@ color:#ff6b00;
         <label for="f-part">Part / Keyword</label>
         <input id="f-part" type="text" placeholder="e.g. transmission, door">
       </div>
-      <button class="btn btn-primary" id="findBtn">Find Parts</button>
+      <button class="btn btn-primary" id="findBtn" type="button">Find Parts</button>
     </div>
   </div>
 
@@ -680,144 +667,16 @@ color:#ff6b00;
         <h2>Every part. Every service.<br>One yard.</h2>
         <p>From a single used bumper to a full engine swap, sourced through our wrecking floor, parts network, and aftermarket suppliers.</p>
       </div>
-      <!-- <div class="tag-grid">
-        <div class="tcard"><span class="num">SVC-01</span><div class="img"><img src="22793_2026_EV9_GT-2048x1152.jpg" alt=""></div><h3>Used OEM Parts</h3><p>Genuine manufacturer parts pulled and tested from vehicles in our own yard.</p></div>
-        <div class="tcard"><span class="num">SVC-02</span><div class="icon"></div><h3>New Aftermarket</h3><p>Brand-new replacement parts for the jobs where used isn't the right call.</p></div>
-        <div class="tcard"><span class="num">SVC-03</span><div class="icon"></div><h3>Engines &amp; Transmissions</h3><p>Compression and road tested, sold with mileage, history, and a written warranty.</p></div>
-        <div class="tcard"><span class="num">SVC-04</span><div class="icon"></div><h3>Body &amp; Panels</h3><p>Doors, bumpers, fenders and glass, colour-matched wherever possible.</p></div>
-        <div class="tcard"><span class="num">SVC-05</span><div class="icon"></div><h3>Wrecking &amp; Cash for Cars</h3><p>Free pickup and same-day payment for unwanted, damaged or end-of-life vehicles.</p></div>
-        <div class="tcard"><span class="num">SVC-06</span><div class="icon"></div><h3>Interchange Lookup</h3><p>We cross-reference part numbers across makes to find every compatible fit.</p></div>
-        <div class="tcard"><span class="num">SVC-07</span><div class="icon"></div><h3>Nationwide Shipping</h3><p>Palletised freight for heavy parts, tracked courier for everything else.</p></div>
-        <div class="tcard"><span class="num">SVC-08</span><div class="icon"></div><h3>Fitting &amp; Install</h3><p>Partner workshops can fit what you buy, booked straight from your invoice.</p></div>
-      </div> -->
 
-     
- <div class="swiper mySwiper"> 
-
-<div class="swiper-wrapper">
-    <div class="swiper-wrapper"></div>
-
-    <!-- Slide 1 -->
-<div class="swiper-slide">
-
-<div class="card">
-<img src="car-engine-25780404.jpg">
-<div class="overlay"></div>
-<div class="content">
-<span>SVC-01</span>
-<h3>Engines</h3>
-<p>Quality tested engines.</p>
-</div>
-</div>
-
-<div class="card">
-<img src="22793_2026_EV9_GT-2048x1152.jpg">
-<div class="overlay"></div>
-<div class="content">
-<span>SVC-02</span>
-<h3>Transmission</h3>
-<p>Manual & Automatic.</p>
-</div>
-</div>
-
-<div class="card">
-<img src="Dacia_Logan_MCV_Model_2009_05.JPG">
-<div class="overlay"></div>
-<div class="content">
-<span>SVC-03</span>
-<h3>Doors</h3>
-<p>OEM body parts.</p>
-</div>
-</div>
-
-<div class="card">
-<img src="logo-removebg-preview.png">
-<div class="overlay"></div>
-<div class="content">
-<span>SVC-04</span>
-<h3>Headlights</h3>
-<p>Original headlights.</p>
-</div>
-</div>
-
-<div class="card">
-<img src="ghostbb.webp">
-<div class="overlay"></div>
-<div class="content">
-<span>SVC-05</span>
-<h3>Bumpers</h3>
-<p>Front & Rear bumpers.</p>
-</div>
-</div>
-
-<div class="card">
-<img src="images/car6.jpg">
-<div class="overlay"></div>
-<div class="content">
-<span>SVC-06</span>
-<h3>Mirrors</h3>
-<p>Electric mirrors.</p>
-</div>
-</div>
-
-<div class="card">
-<img src="RR_50_Most_Expensive_Cars_You_Can_Buy_Right_Now_Rolls_Royce_Ghost_Black_Badge.webp">
-<div class="overlay"></div>
-<div class="content">
-<span>SVC-07</span>
-<h3>Suspension</h3>
-<p>High quality parts.</p>
-</div>
-</div>
-
-<div class="card">
-<img src="spectre.webp">
-<div class="overlay"></div>
-<div class="content">
-<span>SVC-08</span>
-<h3>New Arrivals</h3>
-<p>Latest stock available.</p>
-</div>
-</div>
-
-
-
-</div>
-
-<!-- Slide 2 -->
-
-<div class="swiper-slide">
-
-<div class="card"><img src="22793_2026_EV9_GT-2048x1152.jpg"><div class="overlay"></div><div class="content"><span>SVC-09</span><h3>Radiator</h3></div></div>
-
-<div class="card"><img src="car-engine-25780404.jpg"><div class="overlay"></div><div class="content"><span>SVC-10</span><h3>Alternator</h3></div></div>
-
-<div class="card"><img src="Dacia_Logan_MCV_Model_2009_05.JPG"><div class="overlay"></div><div class="content"><span>SVC-11</span><h3>Starter</h3></div></div>
-
-<div class="card"><img src="ghostbb.webp"><div class="overlay"></div><div class="content"><span>SVC-12</span><h3>Steering</h3></div></div>
-
-<div class="card"><img src="RR_50_Most_Expensive_Cars_You_Can_Buy_Right_Now_Rolls_Royce_Ghost_Black_Badge.webp"><div class="overlay"></div><div class="content"><span>SVC-13</span><h3>Wheel</h3></div></div>
-
-<div class="card"><img src="spectre.webp"><div class="overlay"></div><div class="content"><span>SVC-14</span><h3>Tyres</h3></div></div>
-
-<div class="card"><img src="zeekr-7x-can-be-charged-in-13-minutes-it-is-now-on-sale-in-europe-7455.jpg.webp"><div class="overlay"></div><div class="content"><span>SVC-15</span><h3>Battery</h3></div></div>
-
-<div class="card"><img src="u9-2560-750x430.jpg"><div class="overlay"></div><div class="content"><span>SVC-16</span><h3>ABS Module</h3></div></div>
-
-
-</div>
-
-</div>
-
-<div class="swiper-button-next"></div>
-
-<div class="swiper-button-prev"></div>
-
-</div>
- 
-
-
-  
+      <div class="swiper mySwiper">
+        <div class="swiper-wrapper" id="servicesWrapper">
+          <!-- rendered from SERVICES in js/data.js -->
+        </div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+      </div>
+    </div>
+  </section>
 
   <!-- PROCESS -->
   <section class="section alt-bg" id="process">
@@ -835,8 +694,6 @@ color:#ff6b00;
     </div>
   </section>
 
-
-
   <!-- INVENTORY -->
   <section class="section" id="inventory">
     <div class="wrap">
@@ -853,97 +710,7 @@ color:#ff6b00;
         <button class="filter-btn" data-filter="interior">Interior</button>
       </div>
       <div class="inv-grid" id="invGrid">
-
-        <div class="inv-card" data-cat="engine">
-          <div class="inv-media"><span class="inv-condition">GRADE A</span><span class="part-glyph"><img src="https://robbreport.com/wp-content/uploads/2024/04/cullinanbb.jpg?resize=1024,576" alt=""></span></div>
-          <div class="inv-body">
-            <span class="cat">Engine · V6</span>
-            <h3>2018 Honda Accord 3.5L Engine</h3>
-            <p class="fits">Fits: Accord 2013–2019 · 54,200 mi</p>
-            <div class="inv-foot"><span class="price">$1,180</span><button class="mini-btn">Stock #4432</button></div>
-          </div>
-        </div>
-
-        <div class="inv-card" data-cat="body">
-          <div class="inv-media"><img src="22793_2026_EV9_GT-2048x1152.jpg" alt=""><span class="inv-condition">GRADE B</span><span class="part-glyph"></span></div>
-          <div class="inv-body">
-            <span class="cat">Body · Door</span>
-            <h3>Ford F-150 Front Right Door</h3>
-            <p class="fits">Fits: F-150 2015–2020 · Oxford White</p>
-            <div class="inv-foot"><span class="price">$260</span><button class="mini-btn">Stock #4502-D</button></div>
-          </div>
-        </div>
-
-        <div class="inv-card" data-cat="electrical">
-          <div class="inv-media"><img src="ghostbb.webp" alt=""><span class="inv-condition">GRADE A</span><span class="part-glyph"></span></div>
-          <div class="inv-body">
-            <span class="cat">Electrical · Alternator</span>
-            <h3>Nissan Altima Alternator 130A</h3>
-            <p class="fits">Fits: Altima 2013–2018 · Tested</p>
-            <div class="inv-foot"><span class="price">$95</span><button class="mini-btn">Stock #4488-A</button></div>
-          </div>
-        </div>
-
-        <div class="inv-card" data-cat="engine">
-          <div class="inv-media"><img src="RR_50_Most_Expensive_Cars_You_Can_Buy_Right_Now_Rolls_Royce_Ghost_Black_Badge.webp" alt=""><span class="inv-condition">GRADE A</span><span class="part-glyph"></span></div>
-          <div class="inv-body">
-            <span class="cat">Drivetrain · Transmission</span>
-            <h3>Chevrolet Silverado 6-Speed Auto</h3>
-            <p class="fits">Fits: Silverado 2014–2019 · 61,800 mi</p>
-            <div class="inv-foot"><span class="price">$890</span><button class="mini-btn">Stock #4511-T</button></div>
-          </div>
-        </div>
-
-        <div class="inv-card" data-cat="interior">
-          <div class="inv-media"><img src="spectre.webp" alt=""><span class="inv-condition">GRADE B</span><span class="part-glyph"></span></div>
-          <div class="inv-body">
-            <span class="cat">Interior · Seats</span>
-            <h3>Subaru Outback Front Seat Pair</h3>
-            <p class="fits">Fits: Outback 2015–2019 · Cloth, grey</p>
-            <div class="inv-foot"><span class="price">$210</span><button class="mini-btn">Stock #4498-S</button></div>
-          </div>
-        </div>
-
-        <div class="inv-card" data-cat="body">
-          <div class="inv-media"><img src="u9-2560-750x430.jpg" alt=""><span class="inv-condition">GRADE A</span><span class="part-glyph"></span></div>
-          <div class="inv-body">
-            <span class="cat">Body · Bumper</span>
-            <h3>Toyota Camry Rear Bumper</h3>
-            <p class="fits">Fits: Camry 2018–2022 · Primed, no damage</p>
-            <div class="inv-foot"><span class="price">$175</span><button class="mini-btn">Stock #4471-B</button></div>
-          </div>
-        </div>
-
-        <div class="inv-card" data-cat="electrical">
-          <div class="inv-media"><img src="zeekr-7x-can-be-charged-in-13-minutes-it-is-now-on-sale-in-europe-7455.jpg.webp" alt=""><span class="inv-condition">GRADE A</span></span></div>
-          <div class="inv-body">
-            <span class="cat">Electrical · ECU</span>
-            <h3>Honda Civic Engine Control Unit</h3>
-            <p class="fits">Fits: Civic 2016–2021 · Plug tested</p>
-            <div class="inv-foot"><span class="price">$140</span><button class="mini-btn">Stock #4471-E</button></div>
-          </div>
-        </div>
-
-        <div class="inv-card" data-cat="interior">
-          <div class="inv-media"><img src="car-engine-25780404.jpg" alt=""><span class="inv-condition">GRADE A</span><span class="part-glyph"></span></div>
-          <div class="inv-body">
-            <span class="cat">Interior · Dashboard</span>
-            <h3>Ford F-150 Dashboard Assembly</h3>
-            <p class="fits">Fits: F-150 2015–2020 · Black, no cracks</p>
-            <div class="inv-foot"><span class="price">$230</span><button class="mini-btn">Stock #4502-DB</button></div>
-          </div>
-        </div>
-
-        <div class="inv-card" data-cat="engine">
-          <div class="inv-media"><img src="22793_2026_EV9_GT-2048x1152.jpg" alt=""><span class="inv-condition">GRADE B</span><span class="part-glyph"></span></div>
-          <div class="inv-body">
-            <span class="cat">Engine · 4-Cyl</span>
-            <h3>Nissan Altima 2.5L Engine</h3>
-            <p class="fits">Fits: Altima 2013–2018 · 71,500 mi</p>
-            <div class="inv-foot"><span class="price">$720</span><button class="mini-btn">Stock #4488</button></div>
-          </div>
-        </div>
-
+        <!-- rendered from INVENTORY in js/data.js -->
       </div>
       <div style="text-align:center;margin-top:40px;">
         <a href="#contact" class="btn btn-outline">Request Full Catalogue</a>
@@ -959,18 +726,18 @@ color:#ff6b00;
           <div class="tag-label" style="color:#2c1006;">Cash For Cars</div>
           <h2>Wrecking, scrapping, or selling? We'll buy it as-is.</h2>
           <p>Running or not, damaged, written-off, or just old — get a firm quote in minutes and free pickup within 24 hours.</p>
-          <a href="tel:0481260455" class="btn" style="background:#1e1f1b;color:#fff2e8;">Call 0481260455</a>
+          <a href="#" data-tel-link class="btn" style="background:#1e1f1b;color:#fff2e8;">Call <span data-phone-display></span></a>
         </div>
         <form class="sell-form" id="sellForm">
-          <input type="text" placeholder="Make &amp; Model" required>
-          <input type="text" placeholder="Year" required>
-          <select>
-            <option>Vehicle Condition</option>
+          <input id="sMakeModel" type="text" placeholder="Make &amp; Model" required>
+          <input id="sYear" type="text" placeholder="Year" required>
+          <select id="sCondition">
+            <option value="">Vehicle Condition</option>
             <option>Running</option>
             <option>Not Running</option>
             <option>Written Off / Damaged</option>
           </select>
-          <input type="tel" placeholder="Phone Number" required>
+          <input id="sPhone" type="tel" placeholder="Phone Number" required>
           <button type="submit" class="btn">Get My Cash Quote</button>
         </form>
       </div>
@@ -992,123 +759,21 @@ color:#ff6b00;
         <div class="tag-label">Customer Feedback</div>
         <h2>What the yard's regulars say</h2>
       </div>
-      <div class="testi-grid">
-        <div class="testi">
-          <div class="stars">★★★★★</div>
-          <p>Called about a transmission for my Silverado, had it delivered two days later and it's been running perfectly since. Fair price, no upselling.</p>
-          <div class="who"><span>D. Marsh</span><span>Verified Buyer</span></div>
-        </div>
-        <div class="testi">
-          <div class="stars">★★★★★</div>
-          <p>They picked up my written-off Civic same afternoon and paid on the spot. Easiest part of the whole insurance process, honestly.</p>
-          <div class="who"><span>R. Ibrahim</span><span>Verified Seller</span></div>
-        </div>
-        <div class="testi">
-          <div class="stars">★★★★☆</div>
-          <p>Needed a matching door panel and they tracked one down through their network in a day. Colour match was close enough not to repaint.</p>
-          <div class="who"><span>S. Okafor</span><span>Verified Buyer</span></div>
-        </div>
+      <div class="testi-grid" id="testiGrid">
+        <!-- rendered from TESTIMONIALS in js/data.js -->
       </div>
     </div>
   </section>
 
   <!-- BRANDS -->
-  <!-- <section class="section alt-bg">
-    <div class="wrap">
-      <div class="section-head" style="margin-bottom:32px;">
-        <div class="tag-label">Makes We Stock</div>
-        <h2>Parts across every major make</h2>
-      </div>
-      <div class="brand-strip">
-        <div class="brand-chip">Toyota</div>
-        <div class="brand-chip">Honda</div>
-        <div class="brand-chip">Ford</div>
-        <div class="brand-chip">Chevrolet</div>
-        <div class="brand-chip">Nissan</div>
-        <div class="brand-chip">Subaru</div>
-        <div class="brand-chip">Hyundai</div>
-        <div class="brand-chip">Mazda</div>
-      </div>
-    </div>
-  </section> -->
-
   <section class="brands-section">
-
     <div class="TITTLE">
-        <h2>SHOP BY CAR BRAND</h2>
-        <span></span>
+      <h2>Shop By Car Brand</h2>
     </div>
-
-    <div class="brands-grid">
-
-        <a href="#" class="brand-card">
-            <img src="toyta_logo_PNG1665 (1).png" alt="">
-            <h3>TOYOTA</h3>
-        </a>
-
-        <a href="#" class="brand-card">
-            <img src="honda-logo-png-19.png" alt="Honda">
-            <h3>HONDA</h3>
-        </a>
-
-        <a href="#" class="brand-card">
-            <img src="suzuki_PNG12291.png" alt="Suzuki">
-            <h3>SUZUKI</h3>
-        </a>
-
-        <a href="#" class="brand-card">
-            <img src="hydo_logo_PNG1645.png" alt="Hyundai">
-            <h3>HYUNDAI</h3>
-        </a>
-
-        <a href="#" class="brand-card">
-            <img src="kia.png" alt="Kia">
-            <h3>KIA</h3>
-        </a>
-
-        <a href="#" class="brand-card">
-            <img src="images/jaecoo.png" alt="Jaecoo">
-            <h3>JAECOO</h3>
-        </a>
-
-        <a href="#" class="brand-card">
-            <img src="Mercedes-Benz-Logo-768x478.png" alt="Mercedes">
-            <h3>MERCEDES</h3>
-        </a>
-
-        <a href="#" class="brand-card">
-            <img src="BMW-Logo-1963-1997.png" alt="BMW">
-            <h3>BMW</h3>
-        </a>
-
-        <a href="#" class="brand-card">
-            <img src="lexus.jpg" alt="Lexus">
-            <h3>LEXUS</h3>
-        </a>
-
-        <a href="#" class="brand-card">
-            <img src="Haval-Logo-500x281.png" alt="Haval">
-            <h3>HAVAL</h3>
-        </a>
-
-        <a href="#" class="brand-card">
-            <img src="BYD-Logo-500x281.png" alt="BYD">
-            <h3>BYD</h3>
-        </a>
-
-        <a href="#" class="brand-card">
-            <img src="honda-logo-png-19.png" alt="">
-            <h3>MAZDA</h3>
-        </a>
-
+    <div class="brands-grid" id="brandsGrid">
+      <!-- rendered from BRANDS in js/data.js -->
     </div>
-
-</section>
-
-
-
-
-
+  </section>
 
   <!-- FAQ -->
   <section class="section" id="faq">
@@ -1118,26 +783,7 @@ color:#ff6b00;
         <h2>Frequently asked</h2>
       </div>
       <div id="faqList">
-        <div class="faq-item">
-          <button class="faq-q">Do used parts come with a warranty?<span class="plus">+</span></button>
-          <div class="faq-a"><p>Yes. Every part sold, used or new, carries a minimum 90-day warranty. Engines and transmissions carry an extended 6-month warranty when installed by a licensed mechanic.</p></div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-q">How do I know if a part will fit my car?<span class="plus">+</span></button>
-          <div class="faq-a"><p>Give us your VIN or your make, model and year, and we'll cross-check fitment and interchange numbers before you buy, over the phone or online.</p></div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-q">Can you pick up a car that doesn't run?<span class="plus">+</span></button>
-          <div class="faq-a"><p>Yes, non-running, damaged and written-off vehicles are exactly what we wreck. We arrange free towing and pay on collection.</p></div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-q">Do you ship parts outside the local area?<span class="plus">+</span></button>
-          <div class="faq-a"><p>We ship nationwide. Small parts go by tracked courier; engines, transmissions and panels go by palletised freight with full tracking.</p></div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-q">What condition grades do your parts get?<span class="plus">+</span></button>
-          <div class="faq-a"><p>Grade A means light wear with no mechanical or cosmetic issues. Grade B means fully functional with visible wear or minor cosmetic marks. Grading is noted on every listing.</p></div>
-        </div>
+        <!-- rendered from FAQS in js/data.js -->
       </div>
     </div>
   </section>
@@ -1152,25 +798,24 @@ color:#ff6b00;
       <div class="contact-grid">
         <div>
           <div class="info-block">
-            <div class="ic">☎</div>
-            <div><h4>Call Us</h4><p>0481260455 — Mon–Sat</p></div>
+            <div class="ic"><i class="fa-solid fa-phone"></i></div>
+            <div><h4>Call Us</h4><a href="#" data-tel-link><span data-phone-display></span> — Mon–Sat</a></div>
           </div>
           <div class="info-block">
-            <div class="ic">✉</div>
-            <div><h4>Email</h4><p>afjautoparts.com</p></div>
+            <div class="ic"><i class="fa-brands fa-whatsapp"></i></div>
+            <div><h4>WhatsApp</h4><a href="#" data-whatsapp-link target="_blank" rel="noopener">Chat with us instantly</a></div>
           </div>
           <div class="info-block">
-            <div class="ic">⌖</div>
-            <div><h4>Our Address</h4><p>6 Neon Street Sumner 4074 Queensland Australia.</p></div>
+            <div class="ic"><i class="fa-solid fa-envelope"></i></div>
+            <div><h4>Email</h4><a href="#" data-email-link><span data-email-display></span></a></div>
           </div>
-          <table class="hours-table">
-            <tr><td>Monday – Friday</td><td>7:00 am – 4:00 pm</td></tr>
-            <tr><td>Saturday</td><td>7:00 – 1:00pm</td></tr>
-            <tr><td>Sunday</td><td>Closed</td></tr>
-          </table>
+          <div class="info-block">
+            <div class="ic"><i class="fa-solid fa-location-dot"></i></div>
+            <div><h4>Our Address</h4><p data-address-display>6 Neon Street Sumner 4074 Queensland Australia.</p></div>
+          </div>
+          <table class="hours-table" id="hoursTable"></table>
           <div class="map-box">
-            <span>MAP</span>
-            <span>6 Neon Street Sumner 4074 Queensland Australia</span>
+            <iframe id="mapFrame" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="AFJ Auto Parts location map"></iframe>
           </div>
         </div>
 
@@ -1192,7 +837,7 @@ color:#ff6b00;
             <textarea id="qMsg" placeholder="Any extra detail — VIN, colour, condition preference..."></textarea>
           </div>
           <button type="submit" class="btn btn-primary" style="width:100%;">Send Request</button>
-          <div class="form-msg" id="formMsg">Request received — we'll call you back within one business hour.</div>
+          <div class="form-msg" id="formMsg"></div>
         </form>
       </div>
     </div>
@@ -1204,13 +849,13 @@ color:#ff6b00;
   <div class="wrap">
     <div class="footer-grid">
       <div class="footer-about">
-        <!-- <a href="#top" class="logo"><span class="bolt">AFJ</span>Auto<span> PARTS</span></a> -->
-          <a href="#top" class="logo"><img width="100" src="logo1.png" alt=""></a>
+        <a href="#top" class="logo"><img src="logo1.png" alt="AFJ Auto Parts logo"></a>
         <p>Family-run auto parts and wreckers, sourcing quality used, new and aftermarket parts since 2003.</p>
         <div class="social-row">
-          <a href="#" aria-label="Facebook">f</a>
-          <a href="#" aria-label="Instagram">ig</a>
-          <a href="#" aria-label="YouTube">yt</a>
+          <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+          <a href="#" data-whatsapp-link target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
         </div>
       </div>
       <div>
@@ -1233,7 +878,7 @@ color:#ff6b00;
         <h4>Yard Updates</h4>
         <p style="font-size:13px;color:var(--gray-mid);margin-bottom:12px;">New stock alerts, straight to your inbox.</p>
         <form class="newsletter" id="newsletterForm">
-          <input type="email" placeholder="you@email.com" required>
+          <input id="nlEmail" type="email" placeholder="you@email.com" required>
           <button type="submit" class="mini-btn">Join</button>
         </form>
       </div>
@@ -1245,136 +890,14 @@ color:#ff6b00;
   </div>
 </footer>
 
-<button class="totop" id="totop" aria-label="Back to top">↑</button>
+<div class="fab-stack">
+  <a href="#" data-whatsapp-link target="_blank" rel="noopener" class="fab-whatsapp" aria-label="Chat on WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+  <button class="totop" id="totop" aria-label="Back to top">↑</button>
+</div>
 
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-
-<script>
-
-
-  // Mobile menu
-  const hamburger = document.getElementById('hamburger');
-  const mobileMenu = document.getElementById('mobileMenu');
-  hamburger.addEventListener('click', () => {
-    const isOpen = mobileMenu.classList.toggle('open');
-    hamburger.setAttribute('aria-expanded', isOpen);
-  });
-  mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-    mobileMenu.classList.remove('open');
-    hamburger.setAttribute('aria-expanded', 'false');
-  }));
-
- 
-
-const swiper = new Swiper(".mySwiper",{
-
-loop:true,
-
-speed:900,
-
-spaceBetween:20,
-
-grabCursor:true,
-
-autoplay:{
-
-delay:3000,
-
-disableOnInteraction:false,
-
-},
-
-navigation:{
-
-nextEl:".swiper-button-next",
-
-prevEl:".swiper-button-prev",
-
-},
-
-effect:"slide",
-
-});
-
-
-
-
-
-  // Inventory filter
-  const filterBtns = document.querySelectorAll('.filter-btn');
-  const invCards = document.querySelectorAll('.inv-card');
-  filterBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      filterBtns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      const f = btn.dataset.filter;
-      invCards.forEach(card => {
-        card.style.display = (f === 'all' || card.dataset.cat === f) ? 'flex' : 'none';
-      });
-    });
-  });
-
-  // FAQ accordion
-  document.querySelectorAll('.faq-item').forEach(item => {
-    const q = item.querySelector('.faq-q');
-    const a = item.querySelector('.faq-a');
-    q.addEventListener('click', () => {
-      const isOpen = item.classList.contains('open');
-      document.querySelectorAll('.faq-item').forEach(other => {
-        other.classList.remove('open');
-        other.querySelector('.faq-a').style.maxHeight = null;
-      });
-      if (!isOpen) {
-        item.classList.add('open');
-        a.style.maxHeight = a.scrollHeight + 'px';
-      }
-    });
-  });
-
-  // Part finder (demo behaviour — scrolls to inventory + shows message)
-  document.getElementById('findBtn').addEventListener('click', () => {
-    document.getElementById('inventory').scrollIntoView({behavior:'smooth'});
-  });
-
-  // Forms — front-end only demo confirmation
-  function handleDemoForm(formEl, message, buttonSelector){
-    formEl.addEventListener('submit', e => {
-      e.preventDefault();
-      const btn = formEl.querySelector(buttonSelector) || formEl.querySelector('button[type="submit"]');
-      const original = btn.textContent;
-      btn.textContent = message;
-      btn.disabled = true;
-      setTimeout(() => { btn.textContent = original; btn.disabled = false; formEl.reset(); }, 2400);
-    });
-  }
-  handleDemoForm(document.getElementById('sellForm'), 'Request Sent ✓');
-  handleDemoForm(document.getElementById('newsletterForm'), 'Joined ✓');
-
-  const quoteForm = document.getElementById('quoteForm');
-  const formMsg = document.getElementById('formMsg');
-  quoteForm.addEventListener('submit', e => {
-    e.preventDefault();
-    formMsg.classList.add('show');
-    quoteForm.querySelector('button[type="submit"]').textContent = 'Sent ✓';
-    setTimeout(() => {
-      quoteForm.reset();
-      quoteForm.querySelector('button[type="submit"]').textContent = 'Send Request';
-      formMsg.classList.remove('show');
-    }, 3200);
-  });
-
-  // Back to top
-  const totop = document.getElementById('totop');
-  window.addEventListener('scroll', () => {
-    totop.classList.toggle('show', window.scrollY > 600);
-  });
-  totop.addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
-</script>
-
-
-
+<script src="js/data.js"></script>
+<script src="js/main.js"></script>
 
 </body>
 </html>
